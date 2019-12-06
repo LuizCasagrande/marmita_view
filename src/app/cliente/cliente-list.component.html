@@ -1,0 +1,46 @@
+<p-card header="Lista de Clientes">
+  <div class="text-right m-2">
+    <button [routerLink]="['/cliente/form']"
+            class="ui-button-secondary"
+            label="Novo"
+            pButton
+            type="button"></button>
+  </div>
+  <p-table [value]="lista">
+    <ng-template pTemplate="header">
+      <tr class="text-center">
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Bairro</th>
+        <th>Rua</th>
+        <th>Número</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-objeto>
+      <tr class="text-center">
+        <td>{{objeto.id}}</td>
+        <td>{{objeto.nome}}</td>
+        <td>{{objeto.telefone}}</td>
+        <td>{{objeto.bairro}}</td>
+        <td>{{objeto.logradouro}}</td>
+        <td>{{objeto.numero}}</td>
+        <td>
+          <i [queryParams]="{id: objeto['id']}"
+             [routerLink]="['form']"
+             class="pi pi-pencil"
+             title="Editar"></i>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <td>Sem Registros</td>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      {{lista?.length}} clientes.
+    </ng-template>
+  </p-table>
+</p-card>
+<p-confirmDialog header="Confirmation"
+                 icon="pi pi-exclamation-triangle"></p-confirmDialog>

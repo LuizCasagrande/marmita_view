@@ -1,0 +1,45 @@
+<p-card header="Lista de Ingredientes">
+  <div class="text-right m-2">
+    <button [routerLink]="['/ingrediente/form']"
+            class="ui-button-raised"
+            label="Novo"
+            pButton
+            type="button"></button>
+  </div>
+  <p-table [value]="lista">
+    <ng-template pTemplate="header">
+      <tr class="text-center">
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Inativo</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-objeto>
+      <tr class="text-center">
+        <td>{{objeto.id}}</td>
+        <td>{{objeto.ingredientes}}</td>
+        <td>
+          <p-checkbox disabled="true"
+                      [(ngModel)]="objeto.inativo"
+                      binary="true"></p-checkbox>
+        </td>
+        <td>
+          <i [queryParams]="{id: objeto['id']}"
+             [routerLink]="['form']"
+             class="pi pi-pencil"
+             title="Editar"></i>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>Sem Registros.</tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      {{lista?.length}} ingredientes.
+    </ng-template>
+  </p-table>
+</p-card>
+<p-confirmDialog header="Confirmation"
+                 icon="pi pi-exclamation-triangle"></p-confirmDialog>
+

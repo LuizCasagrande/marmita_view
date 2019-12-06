@@ -1,0 +1,76 @@
+<p-card header="Cadastro de Clientes">
+  <div class="text-right m-2">
+    <button (click)="salvar()"
+            class="ui-button-secondary"
+            label="Salvar"
+            pButton
+            type="button"></button>
+  </div>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        <span>
+          <p>Cliente:</p>
+          <input pInputText [(ngModel)]="objeto.nome" type="text" maxlength="100">
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span>
+          <p>Cpf:</p>
+          <p-inputMask [(ngModel)]="objeto.cpf" type="text" mask="999-999-999-99"></p-inputMask>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span>
+          <p>Senha:</p>
+          <input pInputText [(ngModel)]="objeto.senha" type="password" maxlength="10">
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span>
+          <p>Telefone:</p>
+          <p-inputMask [(ngModel)]="objeto.telefone" type="text" mask="(99) 99999-9999"></p-inputMask>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+      <span>
+        <p>Rua:</p>
+        <input pInputText [(ngModel)]="objeto.logradouro" type="text" maxlength="100">
+      </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+      <span>
+        <p>Número:</p>
+        <input pInputText [(ngModel)]="objeto.numero" type="number">
+      </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+      <span>
+        <p>Bairro:</p>
+        <input pInputText [(ngModel)]="objeto.bairro" type="text" maxlength="100">
+      </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+      <span>
+        <p>Cep:</p>
+        <p-inputMask [(ngModel)]="objeto.cep" type="text" mask="99999-999"></p-inputMask>
+      </span>
+      </div>
+    </div>
+  </div>
+</p-card>

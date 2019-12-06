@@ -1,0 +1,51 @@
+<p-card header="Cadastrar Comida">
+  <div class="text-right m-2">
+    <button (click)="salvar()"
+            class="ui-button-raised"
+            label="Salvar"
+            pButton
+            type="button"></button>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+            <input [(ngModel)]="objeto.comida"
+                   id="comida"
+                   name="comida"
+                   pInputText
+                   type="text">
+            <label for="comida">Comida</label>
+        </span>
+      </div>
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+          <p-checkbox [(ngModel)]="objeto.inativo"
+                      binary="true"
+                      label="Inativo"></p-checkbox>
+        </span>
+      </div>
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+            <p>Ingredientes</p>
+            <p-multiSelect defaultLabel="Selecione"
+                           [options]="ingredienteListSuggestions"
+                           [(ngModel)]="objeto.ingredientesList"></p-multiSelect>
+        </span>
+      </div>
+<!--      <div class="col-12">-->
+<!--        <span class="ui-float-label my-2">-->
+<!--          <p>Tipo</p>-->
+<!--          <p-multiSelect defaultLabel="Selecione"-->
+<!--                         [options]="tipoList"-->
+<!--                         [(ngModel)]="selectedTipos1">-->
+<!--            <ng-template let-objeto pTemplate="item">-->
+<!--                <div>{{objeto.label}}</div>-->
+<!--            </ng-template>-->
+<!--          </p-multiSelect>-->
+<!--        </span>-->
+<!--      </div>-->
+    </div>
+  </div>
+</p-card>
+

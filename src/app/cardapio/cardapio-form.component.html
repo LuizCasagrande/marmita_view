@@ -1,0 +1,33 @@
+<div class="container">
+<div header="Cadastrar Cardapio">
+  <div class="text-right m-2">
+    <button (click)="salvar()"
+            class="ui-button-raised"
+            label="Salvar"
+            pButton
+            type="button"></button>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+            <input [(ngModel)]="objeto.cardapio"
+                   id="nome"
+                   pInputText
+                   type="text">
+            <label for="nome">Nome</label>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+            <p-checkbox [(ngModel)]="objeto.inativo"
+                        binary="true"
+                        label="Inativo"></p-checkbox>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+

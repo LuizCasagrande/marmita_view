@@ -6,7 +6,7 @@ import {Comida} from './comida';
 import {Ingrediente} from '../ingrediente/ingrediente';
 import {TipoComida} from './tipoComida';
 import {IngredienteService} from '../service/ingrediente.service';
-import {TipoComidaService} from '../service/tipo-comida.service';
+import {TipoService} from '../service/tipo.service';
 import {SelectItem} from 'primeng/api/selectitem';
 
 
@@ -29,7 +29,7 @@ export class ComidaFormComponent implements OnInit {
                 private router: Router,
                 private messageService: MessageService,
                 private ingredienteService: IngredienteService,
-                private tipoComidaService: TipoComidaService) {
+                private tipoComidaService: TipoService) {
         this.ingredienteService.findAll().subscribe(res => {
             this.ingredienteListSuggestions = res.map(ingrediente => {
                 return {label: ingrediente.ingredientes, value: ingrediente};
@@ -37,7 +37,7 @@ export class ComidaFormComponent implements OnInit {
         });
         this.tipoComidaService.findAll().subscribe(res => {
             this.tipoList = res.map(value => {
-                return {label: value.tipo.tipoComida, value: value};
+                return {label: value.tipoComida, value: value};
             });
         });
     }

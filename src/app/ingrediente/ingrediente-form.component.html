@@ -1,7 +1,7 @@
 <p-card header="Cadastrar Ingrediente">
   <div class="text-right m-2">
     <button (click)="salvar()"
-            class="ui-button-raised"
+            class="ui-button-secondary"
             label="Salvar"
             pButton
             type="button"></button>
@@ -10,11 +10,10 @@
     <div class="row">
       <div class="col-12">
         <span class="ui-float-label my-2">
-            <input [(ngModel)]="objeto.ingredientes"
-                   id="descricao"
-                   pInputText
-                   type="text">
-            <label for="descricao">Ingrediente</label>
+          <p>Ingrediente:</p>
+          <input [(ngModel)]="objeto.ingredientes"
+                 pInputText
+                 type="text">
         </span>
       </div>
       <div class="col-12">

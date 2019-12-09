@@ -36,13 +36,13 @@ import { ClienteFormComponent } from './cliente/cliente-form.component';
 import {ClienteListComponent} from './cliente/cliente-list.component';
 import {CardapioListComponent} from './cardapio/cardapio-list.component';
 import {LoginComponent} from './login/login.component';
-import { TipoComidaListComponent } from './tipo-comida/tipo-comida-list.component';
-import {TipoComidaFormComponent} from './tipo-comida/tipo-comida-form.component';
 import {TamanhoListComponent} from './tamanho/tamanho-list.component';
 import {TamanhoFormComponent} from './tamanho/tamanho-form.component';
 import {PedidoListComponent} from "./pedido/pedido-list.component";
 import {PedidoFormComponent} from "./pedido/pedido-form.component";
 import {registerLocaleData} from '@angular/common';
+import { TipoListComponent } from './tipo/tipo-list.component';
+import {TipoFormComponent} from "./tipo/tipo-form.component";
 
 registerLocaleData(localePt, 'pt');
 
@@ -62,13 +62,13 @@ registerLocaleData(localePt, 'pt');
     CardapioListComponent,
     CardapioFormComponent,
     LoginComponent,
-    TipoComidaListComponent,
-    TipoComidaFormComponent,
     LoginComponent,
     TamanhoListComponent,
     TamanhoFormComponent,
     PedidoListComponent,
-    PedidoFormComponent
+    PedidoFormComponent,
+    TipoListComponent,
+    TipoFormComponent
   ],
   imports: [
     BrowserModule,

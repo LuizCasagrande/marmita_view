@@ -9,13 +9,13 @@ import {ClienteListComponent} from './cliente/cliente-list.component';
 import {ClienteFormComponent} from './cliente/cliente-form.component';
 import {CardapioListComponent} from './cardapio/cardapio-list.component';
 import {CardapioFormComponent} from './cardapio/cardapio-form.component';
-import {TipoComidaListComponent} from './tipo-comida/tipo-comida-list.component';
-import {TipoComidaFormComponent} from './tipo-comida/tipo-comida-form.component';
 import {TamanhoFormComponent} from './tamanho/tamanho-form.component';
 import {TamanhoListComponent} from './tamanho/tamanho-list.component';
 import {LoginComponent} from './login/login.component';
 import {PedidoListComponent} from "./pedido/pedido-list.component";
 import {PedidoFormComponent} from "./pedido/pedido-form.component";
+import {TipoListComponent} from "./tipo/tipo-list.component";
+import {TipoFormComponent} from "./tipo/tipo-form.component";
 
 
 const routes: Routes = [
@@ -30,12 +30,6 @@ const routes: Routes = [
   },
   {
     path: 'ingrediente/form', component: IngredienteFormComponent
-  },
-  {
-    path: 'tipo-comida', component: TipoComidaListComponent
-  },
-  {
-    path: 'tipo-comida/form', component: TipoComidaFormComponent
   },
   {
     path: 'comida', component: ComidaListComponent
@@ -66,6 +60,12 @@ const routes: Routes = [
   },
   {
     path: 'pedido/form', component: PedidoFormComponent
+  },
+  {
+    path: 'tipo', component: TipoListComponent
+  },
+  {
+    path: 'tipo/form', component: TipoFormComponent
   }
 ];
 

@@ -57,7 +57,7 @@ export class AppComponent implements OnInit, OnDestroy {
           },
           {
             label: 'Tipos de comida',
-            routerLink: '/tipo-comida',
+            routerLink: '/tipo',
           },
         ]
       },

@@ -1,7 +1,7 @@
 <p-card header="Lista de Tipos de Comida">
   <div class="text-right m-2">
-    <button [routerLink]="['/tipo-comida/form']"
-            class="ui-button-raised"
+    <button [routerLink]="['/tipo/form']"
+            class="ui-button-secondary"
             label="Novo"
             pButton
             type="button"></button>
@@ -10,7 +10,7 @@
     <ng-template pTemplate="header">
       <tr class="text-center">
         <th>Id</th>
-        <th>Tipo de Comida</th>
+        <th>Nome</th>
         <th>Inativo</th>
         <th>Ações</th>
       </tr>
@@ -20,9 +20,10 @@
         <td>{{objeto.id}}</td>
         <td>{{objeto.tipoComida}}</td>
         <td>
-          <p-checkbox [(ngModel)]="objeto.inativo"
-                      disabled="true"
-                      binary="true"></p-checkbox></td>
+          <p-checkbox disabled="true"
+                      [(ngModel)]="objeto.inativo"
+                      binary="true"></p-checkbox>
+        </td>
         <td>
           <i [queryParams]="{id: objeto['id']}"
              [routerLink]="['form']"

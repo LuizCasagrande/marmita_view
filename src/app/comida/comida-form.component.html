@@ -10,12 +10,11 @@
     <div class="row">
       <div class="col-12">
         <span class="ui-float-label my-2">
-            <input [(ngModel)]="objeto.comida"
-                   id="comida"
-                   name="comida"
-                   pInputText
-                   type="text">
-            <label for="comida">Comida</label>
+          <p>Comida:</p>
+          <input [(ngModel)]="objeto.comida"
+                 name="comida"
+                 pInputText
+                 type="text">
         </span>
       </div>
       <div class="col-12">
@@ -28,23 +27,30 @@
       <div class="col-12">
         <span class="ui-float-label my-2">
             <p>Ingredientes</p>
-            <p-multiSelect defaultLabel="Selecione"
+            <p-multiSelect [(ngModel)]="objeto.ingredientesList"
                            [options]="ingredienteListSuggestions"
-                           [(ngModel)]="objeto.ingredientesList"></p-multiSelect>
+                           defaultLabel="Selecione"
+                           maxSelectedLabels="15"></p-multiSelect>
+        </span>
+        <span class="ui-float-label my-2">
+          <p-multiSelect [(ngModel)]="objeto.tipoList"
+                         [options]="tipoListSuggestions"
+                         [panelStyle]="{minWidth:'12em'}">
+            <ng-template let-selectedCars pTemplate="selectedItems">
+              <span *ngFor="let tipo of tipoListSuggestions">
+                {{tipo.title}}
+              </span>
+            </ng-template>
+            <ng-template let-tipo let-i="index" pTemplate="item">
+              {{i}}
+              <div style="font-size:14px;float:right;margin-top:4px">
+                {{tipo.label}}
+              </div>
+            </ng-template>
+          </p-multiSelect>
+          <p>Tipos Selecionados: {{objeto.tipoList}}</p>
         </span>
       </div>
-<!--      <div class="col-12">-->
-<!--        <span class="ui-float-label my-2">-->
-<!--          <p>Tipo</p>-->
-<!--          <p-multiSelect defaultLabel="Selecione"-->
-<!--                         [options]="tipoList"-->
-<!--                         [(ngModel)]="selectedTipos1">-->
-<!--            <ng-template let-objeto pTemplate="item">-->
-<!--                <div>{{objeto.label}}</div>-->
-<!--            </ng-template>-->
-<!--          </p-multiSelect>-->
-<!--        </span>-->
-<!--      </div>-->
     </div>
   </div>
 </p-card>

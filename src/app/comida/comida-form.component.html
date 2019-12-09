@@ -10,6 +10,19 @@
     <div class="row">
       <div class="col-12">
         <span class="ui-float-label my-2">
+          <input id="comida" nome="comida" class="form-control"
+                 required maxlength="100" appForbiddenName="bob"
+                 [(ngModel)]="objeto.comida" #comida="ngModel">
+
+        <div *ngIf="comida.invalid && (comida.dirty || comida.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="titulo.errors.required">
+            Titulo obrigatorio
+          </div>
+          <div *ngIf="titulo.errors.minlength">
+            O titulo deve ter pelo menos 4 caracteres.
+          </div>
           <p>Comida:</p>
           <input [(ngModel)]="objeto.comida"
                  name="comida"

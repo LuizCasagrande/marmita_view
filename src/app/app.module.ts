@@ -20,7 +20,7 @@ import {
   SidebarModule,
   TableModule,
   ToastModule,
-  DropdownModule, InputMaskModule, MenubarModule, CalendarModule
+  DropdownModule, InputMaskModule, MenubarModule, CalendarModule, MessageModule
 } from 'primeng';
 import {SidebarService} from './service/sidebar.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -91,7 +91,8 @@ registerLocaleData(localePt, 'pt');
     DropdownModule,
     InputMaskModule,
     MenubarModule,
-    CalendarModule
+    CalendarModule,
+    MessageModule
   ],
   providers: [
     SidebarService,

@@ -1,4 +1,4 @@
-<p-card header="Cadastrar Tamanho">
+<p-card header="Cadastrar Tipo de Comida">
   <div class="text-right m-2">
     <button (click)="salvar()"
             class="ui-button-secondary"
@@ -10,11 +10,10 @@
     <div class="row">
       <div class="col-12">
         <span class="ui-float-label my-2">
-          <p>Peso:</p>
-          <input [(ngModel)]="objeto.peso"
-                 maxlength="100"
+          <p>Tipo:</p>
+          <input [(ngModel)]="objeto.tipoComida"
                  pInputText
-                 type="number">
+                 type="text">
         </span>
       </div>
       <div class="col-12">

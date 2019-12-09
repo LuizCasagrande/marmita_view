@@ -15,6 +15,7 @@ import {LoginComponent} from './login/login.component';
 import {PedidoListComponent} from "./pedido/pedido-list.component";
 import {PedidoFormComponent} from "./pedido/pedido-form.component";
 import {TipoListComponent} from "./tipo/tipo-list.component";
+import {TipoFormComponent} from "./tipo/tipo-form.component";
 
 
 const routes: Routes = [
@@ -62,6 +63,9 @@ const routes: Routes = [
   },
   {
     path: 'tipo', component: TipoListComponent
+  },
+  {
+    path: 'tipo/form', component: TipoFormComponent
   }
 ];
 

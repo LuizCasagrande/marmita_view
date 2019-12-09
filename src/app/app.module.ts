@@ -42,6 +42,7 @@ import {PedidoListComponent} from "./pedido/pedido-list.component";
 import {PedidoFormComponent} from "./pedido/pedido-form.component";
 import {registerLocaleData} from '@angular/common';
 import { TipoListComponent } from './tipo/tipo-list.component';
+import {TipoFormComponent} from "./tipo/tipo-form.component";
 
 registerLocaleData(localePt, 'pt');
 
@@ -66,7 +67,8 @@ registerLocaleData(localePt, 'pt');
     TamanhoFormComponent,
     PedidoListComponent,
     PedidoFormComponent,
-    TipoListComponent
+    TipoListComponent,
+    TipoFormComponent
   ],
   imports: [
     BrowserModule,

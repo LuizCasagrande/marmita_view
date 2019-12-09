@@ -11,9 +11,9 @@
       <div class="col-12">
         <span class="ui-float-label my-2">
           <p>Comida</p>
-          <input id="comida" class="form-control"
-                 required maxlength="100"
-                 [(ngModel)]="objeto.comida" #comida="ngModel">
+          <input #comida="ngModel" [(ngModel)]="objeto.comida"
+                 class="form-control" id="comida"
+                 maxlength="100" required>
           <div *ngIf="comida.invalid"
                class="alert alert-danger">
             <div *ngIf="comida.errors.required">

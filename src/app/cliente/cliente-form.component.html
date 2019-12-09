@@ -1,76 +1,95 @@
+<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
 <p-card header="Cadastro de Clientes">
   <div class="text-right m-2">
-    <button (click)="salvar()"
-            class="ui-button-secondary"
+    <button class="ui-button-secondary"
             label="Salvar"
             pButton
-            type="button"></button>
+            type="submit"
+            [disabled]="!userform.valid"></button>
   </div>
   <div class="container">
-
-    <div class="row">
-      <div class="col-12">
-        <span>
-          <p>Cliente:</p>
-          <input pInputText [(ngModel)]="objeto.nome" type="text" maxlength="100">
-        </span>
-      </div>
+    <div class="ui-grid-col-12">
+      Cliente:
     </div>
-    <div class="row">
-      <div class="col-12">
-        <span>
-          <p>Cpf:</p>
-          <p-inputMask [(ngModel)]="objeto.cpf" type="text" mask="999.999.999-99"></p-inputMask>
-        </span>
-      </div>
+    <div class="ui-grid-col-12">
+      <input pInputText type="text" maxlength="100" formControlName="nome">
     </div>
-    <div class="row">
-      <div class="col-12">
-        <span>
-          <p>Senha:</p>
-          <input pInputText [(ngModel)]="objeto.senha" type="password" maxlength="10">
-        </span>
-      </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo cliente é obrigatório"
+                 *ngIf="!userform.controls['nome'].valid&&userform.controls['nome'].dirty"></p-message>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <span>
-          <p>Telefone:</p>
-          <p-inputMask [(ngModel)]="objeto.telefone" type="text" mask="(99) 99999-9999"></p-inputMask>
-        </span>
-      </div>
+    <div class="ui-grid-col-12">
+      Cpf:
     </div>
-    <div class="row">
-      <div class="col-12">
-      <span>
-        <p>Rua:</p>
-        <input pInputText [(ngModel)]="objeto.logradouro" type="text" maxlength="100">
-      </span>
-      </div>
+    <div class="ui-grid-col-12">
+      <p-inputMask type="text" mask="999.999.999-99" formControlName="cpf"></p-inputMask>
     </div>
-    <div class="row">
-      <div class="col-12">
-      <span>
-        <p>Número:</p>
-        <input pInputText [(ngModel)]="objeto.numero" type="number">
-      </span>
-      </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo cpf é obrigatório"
+                 *ngIf="!userform.controls['cpf'].valid&&userform.controls['cpf'].dirty"></p-message>
     </div>
-    <div class="row">
-      <div class="col-12">
-      <span>
-        <p>Bairro:</p>
-        <input pInputText [(ngModel)]="objeto.bairro" type="text" maxlength="100">
-      </span>
-      </div>
+    <div class="ui-grid-col-12">
+      Senha:
     </div>
-    <div class="row">
-      <div class="col-12">
-      <span>
-        <p>Cep:</p>
-        <p-inputMask [(ngModel)]="objeto.cep" type="text" mask="99999-999"></p-inputMask>
-      </span>
-      </div>
+    <div class="ui-grid-col-12">
+      <input pInputText type="password" maxlength="10" formControlName="senha">
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo senha é obrigatório"
+                 *ngIf="!userform.controls['senha'].valid&&userform.controls['senha'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12">
+      Telefone:
+    </div>
+    <div class="ui-grid-col-12">
+      <p-inputMask type="text" mask="(99) 99999-9999" formControlName="telefone"></p-inputMask>
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo telefone é obrigatório"
+                 *ngIf="!userform.controls['telefone'].valid&&userform.controls['telefone'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12">
+      Rua:
+    </div>
+    <div class="ui-grid-col-12">
+      <input pInputText type="text" maxlength="100" formControlName="logradouro">
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo rua é obrigatório"
+                 *ngIf="!userform.controls['logradouro'].valid&&userform.controls['logradouro'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12">
+      Número:
+    </div>
+    <div class="ui-grid-col-12">
+      <input pInputText type="number" maxlength="10" formControlName="numero">
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo número é obrigatório"
+                 *ngIf="!userform.controls['numero'].valid&&userform.controls['numero'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12">
+      Bairro:
+    </div>
+    <div class="ui-grid-col-12">
+      <input pInputText type="text" maxlength="100" formControlName="bairro">
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo bairro é obrigatório"
+                 *ngIf="!userform.controls['bairro'].valid&&userform.controls['bairro'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12">
+      Cep:
+    </div>
+    <div class="ui-grid-col-12">
+      <p-inputMask type="text" mask="99999-999" formControlName="cep"></p-inputMask>
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo cep é obrigatório"
+                 *ngIf="!userform.controls['cep'].valid&&userform.controls['cep'].dirty"></p-message>
     </div>
   </div>
+  <div style="clear: both"></div>
 </p-card>
+</form>
+

@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import {ConfirmationService, MessageService} from 'primeng';
-import {Title} from '@angular/platform-browser';
-import {ListComponent} from '../component/list.component';
-import {TipoComidaService} from '../service/tipo-comida.service';
-import {TipoComida} from '../comida/tipoComida';
+import {Component, OnInit} from "@angular/core";
+import {ListComponent} from "../component/list.component";
+import {Tipo} from "./tipo";
+import {TipoService} from "../service/tipo.service";
+import {ConfirmationService, MessageService} from "primeng";
+import {Title} from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-tipo-comida',
-  templateUrl: './tipo-comida-list.component.html',
+  selector: 'app-tipo-list',
+  templateUrl: './tipo-list.component.html',
   styleUrls: []
 })
-export class TipoComidaListComponent extends ListComponent<TipoComida> implements OnInit {
+export class TipoListComponent extends ListComponent<Tipo> implements OnInit {
 
-  constructor(private tipoComidaService: TipoComidaService,
+  constructor(private tipoService: TipoService,
               private messageService: MessageService,
               private confirmationService: ConfirmationService,
               private titleService: Title) {
@@ -20,13 +20,13 @@ export class TipoComidaListComponent extends ListComponent<TipoComida> implement
   }
 
   ngOnInit() {
-    this.titleService.setTitle('Tipos de Comida');
+    this.titleService.setTitle('Lista de Tipos de Comida');
     this.carregarLista();
   }
 
   carregarLista(): void {
     this.loading = true;
-    this.tipoComidaService.findAll().subscribe(res => {
+    this.tipoService.findAll().subscribe(res => {
       this.lista = res;
       setTimeout(() => this.loading = false);
     });
@@ -34,7 +34,7 @@ export class TipoComidaListComponent extends ListComponent<TipoComida> implement
 
   excluir(id: number): void {
     this.confirmationService.confirm({
-      message: 'Você tem certeza que deseja excluir esse tipo de comida?',
+      message: 'Você tem certeza que deseja excluir esse tipo?',
       accept: () => this.deletar(id),
       acceptLabel: 'SIM',
       rejectLabel: 'NÃO',
@@ -43,7 +43,7 @@ export class TipoComidaListComponent extends ListComponent<TipoComida> implement
 
   private deletar(id: number): void {
     this.loading = true;
-    this.tipoComidaService.delete(id).subscribe(() => {
+    this.tipoService.delete(id).subscribe(() => {
       this.carregarLista();
 
       this.messageService.add({
@@ -59,5 +59,5 @@ export class TipoComidaListComponent extends ListComponent<TipoComida> implement
       setTimeout(() => this.loading = false);
     });
   }
-
 }
+

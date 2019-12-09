@@ -6,6 +6,10 @@ import {Comida} from './comida';
 import {IngredienteService} from '../service/ingrediente.service';
 import {SelectItem} from 'primeng/api/selectitem';
 import {TipoService} from "../service/tipo.service";
+import {Ingrediente} from "../ingrediente/ingrediente";
+import {ComidaIngrediente} from "./comidaIngrediente";
+import {Tipo} from "../tipo/tipo";
+import {TipoComida} from "./tipoComida";
 
 @Component({
     selector: 'app-comida-form',
@@ -16,7 +20,9 @@ export class ComidaFormComponent implements OnInit {
 
     objeto: Comida;
     ingredienteListSuggestions: SelectItem[];
+    ingredientesList: Ingrediente[] = [];
     tipoListSuggestions: SelectItem[];
+    tipoList: Tipo[] = [];
 
     constructor(private activatedRoute: ActivatedRoute,
                 private comidaService: ComidaService,
@@ -24,6 +30,7 @@ export class ComidaFormComponent implements OnInit {
                 private messageService: MessageService,
                 private ingredienteService: IngredienteService,
                 private tipoService: TipoService) {
+
         this.ingredienteService.findAll().subscribe(res => {
             this.ingredienteListSuggestions = res.map(ingrediente => {
                 return {label: ingrediente.ingredientes, value: ingrediente};
@@ -34,7 +41,7 @@ export class ComidaFormComponent implements OnInit {
           this.tipoListSuggestions = res.map(tipo => {
             return {label: tipo.tipoComida, value: tipo};
           })
-        })
+        });
     }
 
     ngOnInit() {
@@ -42,6 +49,14 @@ export class ComidaFormComponent implements OnInit {
             if (params.has('id')) {
                 this.comidaService.findOne(parseInt(params.get('id'))).subscribe(res => {
                     this.objeto = res;
+                  this.ingredientesList = [];
+                  for (const comidaIngrediente of this.objeto.ingredientesList) {
+                    this.ingredientesList.push(comidaIngrediente.ingrediente);
+                  }
+                  this.tipoList = [];
+                  for (const tipoComida of this.objeto.tipoList) {
+                    this.tipoList.push(tipoComida.tipo);
+                  }
                 });
             } else {
                 this.resetaForm();
@@ -50,6 +65,20 @@ export class ComidaFormComponent implements OnInit {
     }
 
     salvar(): void {
+      this.objeto.ingredientesList = [];
+      for (const ingrediente of this.ingredientesList) {
+        const comidaIngrediente = new ComidaIngrediente();
+        comidaIngrediente.ingrediente = ingrediente;
+        this.objeto.ingredientesList.push(comidaIngrediente);
+      }
+      this.objeto.tipoList = [];
+      for (const tipo of this.tipoList) {
+        const tipoComida = new TipoComida();
+        tipoComida.tipo = tipo;
+        this.objeto.tipoList.push(tipoComida);
+      }
+
+      console.log(this.objeto);
         this.comidaService.save(this.objeto).subscribe(res => {
             this.objeto = res;
 
@@ -69,8 +98,8 @@ export class ComidaFormComponent implements OnInit {
 
     private resetaForm(): void {
         this.objeto = new Comida();
-        this.objeto.ingredientesList = [];
-        this.objeto.tipoList = [];
+        this.ingredientesList = [];
+        this.tipoList = [];
     }
 }
 

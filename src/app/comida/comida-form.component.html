@@ -26,29 +26,22 @@
       </div>
       <div class="col-12">
         <span class="ui-float-label my-2">
-            <p>Ingredientes</p>
-            <p-multiSelect [(ngModel)]="objeto.ingredientesList"
+            <p>Ingredientes:</p>
+            <p-multiSelect [(ngModel)]="ingredientesList"
                            [options]="ingredienteListSuggestions"
+                           [panelStyle]="{width:'15em'}"
                            defaultLabel="Selecione"
-                           maxSelectedLabels="15"></p-multiSelect>
+                           maxSelectedLabels="5"></p-multiSelect>
         </span>
+      </div>
+      <div class="col-12">
         <span class="ui-float-label my-2">
-          <p-multiSelect [(ngModel)]="objeto.tipoList"
-                         [options]="tipoListSuggestions"
-                         [panelStyle]="{minWidth:'12em'}">
-            <ng-template let-selectedCars pTemplate="selectedItems">
-              <span *ngFor="let tipo of tipoListSuggestions">
-                {{tipo.title}}
-              </span>
-            </ng-template>
-            <ng-template let-tipo let-i="index" pTemplate="item">
-              {{i}}
-              <div style="font-size:14px;float:right;margin-top:4px">
-                {{tipo.label}}
-              </div>
-            </ng-template>
-          </p-multiSelect>
-          <p>Tipos Selecionados: {{objeto.tipoList}}</p>
+            <p>Tipos:</p>
+            <p-multiSelect [(ngModel)]="tipoList"
+                           [options]="tipoListSuggestions"
+                           [panelStyle]="{width:'15em'}"
+                           defaultLabel="Selecione"
+                           maxSelectedLabels="5"></p-multiSelect>
         </span>
       </div>
     </div>

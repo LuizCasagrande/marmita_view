@@ -78,22 +78,21 @@ export class ComidaFormComponent implements OnInit {
         this.objeto.tipoList.push(tipoComida);
       }
 
-      console.log(this.objeto);
-        this.comidaService.save(this.objeto).subscribe(res => {
-            this.objeto = res;
+      this.comidaService.save(this.objeto).subscribe(res => {
+          this.objeto = res;
 
-            this.messageService.add({
-                severity: 'success',
-                summary: 'Salvo com sucesso!'
-            });
+          this.messageService.add({
+              severity: 'success',
+              summary: 'Salvo com sucesso!'
+          });
 
-            this.router.navigateByUrl('comida');
-        }, erro => {
-            this.messageService.add({
-                severity: 'error',
-                summary: erro.error.message
-            });
-        });
+          this.router.navigateByUrl('comida');
+      }, erro => {
+          this.messageService.add({
+              severity: 'error',
+              summary: erro.error.message
+          });
+      });
     }
 
     private resetaForm(): void {

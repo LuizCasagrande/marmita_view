@@ -10,12 +10,11 @@
     <div class="row">
       <div class="col-12">
         <span class="ui-float-label my-2">
-            <input [(ngModel)]="objeto.comida"
-                   id="comida"
-                   name="comida"
-                   pInputText
-                   type="text">
-            <label for="comida">Comida</label>
+          <p>Comida:</p>
+          <input [(ngModel)]="objeto.comida"
+                 name="comida"
+                 pInputText
+                 type="text">
         </span>
       </div>
       <div class="col-12">
@@ -27,24 +26,24 @@
       </div>
       <div class="col-12">
         <span class="ui-float-label my-2">
-            <p>Ingredientes</p>
-            <p-multiSelect defaultLabel="Selecione"
+            <p>Ingredientes:</p>
+            <p-multiSelect [(ngModel)]="ingredientesList"
                            [options]="ingredienteListSuggestions"
-                           [(ngModel)]="objeto.ingredientesList"></p-multiSelect>
+                           [panelStyle]="{width:'15em'}"
+                           defaultLabel="Selecione"
+                           maxSelectedLabels="5"></p-multiSelect>
         </span>
       </div>
-<!--      <div class="col-12">-->
-<!--        <span class="ui-float-label my-2">-->
-<!--          <p>Tipo</p>-->
-<!--          <p-multiSelect defaultLabel="Selecione"-->
-<!--                         [options]="tipoList"-->
-<!--                         [(ngModel)]="selectedTipos1">-->
-<!--            <ng-template let-objeto pTemplate="item">-->
-<!--                <div>{{objeto.label}}</div>-->
-<!--            </ng-template>-->
-<!--          </p-multiSelect>-->
-<!--        </span>-->
-<!--      </div>-->
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+            <p>Tipos:</p>
+            <p-multiSelect [(ngModel)]="tipoList"
+                           [options]="tipoListSuggestions"
+                           [panelStyle]="{width:'15em'}"
+                           defaultLabel="Selecione"
+                           maxSelectedLabels="5"></p-multiSelect>
+        </span>
+      </div>
     </div>
   </div>
 </p-card>

@@ -6,5 +6,10 @@ export class Comida {
   comida: string;
   ingredientesList: ComidaIngrediente[];
   tipoList: TipoComida[];
-  inativo: boolean;
+  inativo: boolean = false;
+
+  constructor() {
+   this.ingredientesList = new Array<ComidaIngrediente>();
+    this.tipoList = new Array<TipoComida>();
+  }
 }

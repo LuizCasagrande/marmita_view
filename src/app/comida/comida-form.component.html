@@ -11,16 +11,15 @@
       <div class="col-12">
         <span class="ui-float-label my-2">
           <p>Comida</p>
-          <input id="comida" nome="comida" class="form-control"
-                 required maxlength="100" appForbiddenName="bob"
+          <input id="comida" class="form-control"
+                 required maxlength="100"
                  [(ngModel)]="objeto.comida" #comida="ngModel">
-
-        <div *ngIf="comida.invalid && (comida.dirty || comida.touched)"
-             class="alert alert-danger">
-          <div *ngIf="comida.errors.required">
-            Descricão da comida obrigatoria
+          <div *ngIf="comida.invalid"
+               class="alert alert-danger">
+            <div *ngIf="comida.errors.required">
+              Nome para comida é obrigatório.
+            </div>
           </div>
-        </div>
         </span>
       </div>
       <div class="col-12">

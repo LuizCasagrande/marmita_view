@@ -1,0 +1,34 @@
+<p-card header="Cadastrar Pedido">
+  <div class="text-right m-2">
+    <button (click)="salvar()"
+            class="ui-button-raised"
+            label="Salvar"
+            pButton
+            type="button"></button>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+          <p>Data</p>
+            <p-calendar dateFormat="dd/mm/yy" [(ngModel)]="objeto.data" [showIcon]="true"></p-calendar>
+        </span>
+      </div>
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+           <p-dropdown [options]="selectedTamanho" [(ngModel)]="objeto.tamanhoPedidoList" placeholder="Tamanho da Marmita kg"
+                      [showClear]="true"></p-dropdown>
+        </span>
+      </div>
+      <div class="col-12">
+        <span class="ui-float-label my-2">
+            <input [(ngModel)]="objeto.quantidade"
+                   id="quantidade"
+                   pInputText
+                   type="text">
+            <label for="quantidade">Quantidade</label>
+        </span>
+      </div>
+    </div>
+  </div>
+</p-card>

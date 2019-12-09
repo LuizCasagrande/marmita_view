@@ -60,5 +60,6 @@ export class PedidoListComponent extends ListComponent<Pedido> implements OnInit
       setTimeout(() => this.loading = false);
     });
   }
+
 }
 

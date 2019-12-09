@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {MessageService} from "primeng";
+import {MessageService, SelectItem} from "primeng";
 import {Pedido} from "./pedido";
 import {PedidoService} from "../service/pedido.service";
+import {Tamanho} from "../tamanho/tamanho";
+import {TamanhoService} from "../service/tamanho.service";
 
 
 @Component({
@@ -11,14 +13,20 @@ import {PedidoService} from "../service/pedido.service";
   styleUrls: []
 })
 export class PedidoFormComponent implements OnInit {
-
   objeto: Pedido;
+  selectedTamanho: { label: number; value: Tamanho }[];
 
 
   constructor(private activatedRoute: ActivatedRoute,
               private pedidoService: PedidoService,
+              private tamanhoService: TamanhoService,
               private router: Router,
               private messageService: MessageService) {
+    this.tamanhoService.findAll().subscribe(res => {
+      this.selectedTamanho = res.map(tamanho => {
+        return {label: tamanho.peso, value: tamanho};
+      });
+    });
   }
 
   ngOnInit() {

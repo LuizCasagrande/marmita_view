@@ -4,4 +4,5 @@ export class Pedido {
 id: number;
 data: Date;
 tamanhoPedidoList: Tamanho[];
+quantidade: number;
 }

@@ -1,7 +1,7 @@
 <header>
   <div *ngIf="taLogado">
     <p-menubar [model]="menuList">
-      <p-button icon="pi pi-user" label="Sair" class="ui-button-raised" (click)="logout()"></p-button>
+      <p-button icon="pi pi-user" label="Sair" styleClass="ui-button-secondary" (click)="logout()"></p-button>
     </p-menubar>
   </div>
   <div *ngIf="!taLogado" class="m-2" style="position: fixed; right: 0">

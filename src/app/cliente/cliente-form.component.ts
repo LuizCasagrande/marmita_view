@@ -1,5 +1,5 @@
 import {Component, Injector, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {MessageService} from 'primeng';
 import {Cliente} from './cliente';
 import {ClienteService} from '../service/cliente.service';

@@ -1,33 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {Ingrediente} from './ingrediente';
 import {IngredienteService} from '../service/ingrediente.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {MessageService} from 'primeng';
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {BaseForm} from "../service/base.form";
 
 @Component({
   selector: 'app-ingrediente-form',
   templateUrl: './ingrediente-form.component.html',
   styleUrls: []
 })
-export class IngredienteFormComponent implements OnInit {
+export class IngredienteFormComponent extends BaseForm<Ingrediente> implements OnInit {
 
-  objeto: Ingrediente;
+  submitted: boolean;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(public injector: Injector,
               private ingredienteService: IngredienteService,
               private router: Router,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private fb: FormBuilder) {
+    super(injector, ingredienteService);
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      if (params.has('id')) {
-        this.ingredienteService.findOne(parseInt(params.get('id'))).subscribe(res => {
-          this.objeto = res;
-        });
-      } else {
-        this.resetaForm();
-      }
+    this.form = this.fb.group({
+      'id': new FormControl(''),
+      'ingredientes': new FormControl('', Validators.required),
+      'inativo': new FormControl(''),
     });
   }
 
@@ -49,8 +49,9 @@ export class IngredienteFormComponent implements OnInit {
     });
   }
 
-  private resetaForm(): void {
-    this.objeto = new Ingrediente();
+  onSubmit(value: Ingrediente) {
+    this.objeto = value;
+    this.salvar();
   }
 
 }

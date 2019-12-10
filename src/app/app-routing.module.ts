@@ -43,7 +43,7 @@ const routes: Routes = [
     path: 'cliente', component: ClienteListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'cliente/form', component: ClienteFormComponent, canActivate: [AuthGuard]
+    path: 'cliente/form', component: ClienteFormComponent
   },
   {
     path: 'cardapio', component: CardapioListComponent, canActivate: [AuthGuard]

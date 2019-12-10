@@ -28,6 +28,7 @@
       <p-message severity="error" text="o campo cpf é obrigatório"
                  *ngIf="!form.controls['cpf'].valid&&form.controls['cpf'].dirty"></p-message>
     </div>
+    <div *ngIf="objeto.id == null">
     <div class="ui-grid-col-12">
       Senha:
     </div>
@@ -37,6 +38,7 @@
     <div class="ui-grid-col-12">
       <p-message severity="error" [text]="form.controls['senha'].errors['required'] ? 'o campo senha é obrigatório' : form.controls['senha'].errors['minlength'] ? 'Tem que ter mais de 6 caracteres' : ''"
                  *ngIf="!form.controls['senha'].valid&&form.controls['senha'].dirty"></p-message>
+    </div>
     </div>
     <div class="ui-grid-col-12">
       Telefone:

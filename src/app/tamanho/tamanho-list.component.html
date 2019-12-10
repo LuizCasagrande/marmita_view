@@ -11,6 +11,7 @@
       <tr class="text-center">
         <th>Id</th>
         <th>Peso</th>
+        <th>Preço</th>
         <th>Inativo</th>
         <th>Ações</th>
       </tr>
@@ -19,6 +20,7 @@
       <tr class="text-center">
         <td>{{objeto.id}}</td>
         <td>{{objeto.peso}} Kg</td>
+        <td>{{objeto.preco|currency: 'BRL'}}</td>
         <td>
           <p-checkbox disabled="true"
                       [(ngModel)]="objeto.inativo"

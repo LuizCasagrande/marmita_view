@@ -20,7 +20,7 @@ import {
   SidebarModule,
   TableModule,
   ToastModule,
-  DropdownModule, InputMaskModule, MenubarModule, CalendarModule, MessageModule
+  DropdownModule, InputMaskModule, MenubarModule, CalendarModule, MessageModule, AutoCompleteModule, SplitButtonModule
 } from 'primeng';
 import {SidebarService} from './service/sidebar.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -43,9 +43,10 @@ import {PedidoFormComponent} from "./pedido/pedido-form.component";
 import {registerLocaleData} from '@angular/common';
 import { TipoListComponent } from './tipo/tipo-list.component';
 import {TipoFormComponent} from "./tipo/tipo-form.component";
-import { AlergiaComponent } from './alergia/alergia.component';
-import { FavoritoComponent } from './favorito/favorito.component';
+import { AlergiaFormComponent } from './alergia/alergia-form.component';
+import { FavoritoFormComponent } from './favorito/favorito-form..component';
 import { DetestadaComponent } from './detestada/detestada.component';
+import { TamanhoPedidoComponent } from './pedido/tamanho-pedido/tamanho-pedido.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -72,9 +73,10 @@ registerLocaleData(localePt, 'pt');
     PedidoFormComponent,
     TipoListComponent,
     TipoFormComponent,
-    AlergiaComponent,
-    FavoritoComponent,
-    DetestadaComponent
+    AlergiaFormComponent,
+    FavoritoFormComponent,
+    DetestadaComponent,
+    TamanhoPedidoComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,10 @@ registerLocaleData(localePt, 'pt');
     MenubarModule,
     CalendarModule,
     MessageModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutoCompleteModule,
+    SplitButtonModule,
+
   ],
   providers: [
     SidebarService,

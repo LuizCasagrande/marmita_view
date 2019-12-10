@@ -22,7 +22,7 @@ export class LoginService extends BaseService<Login>{
       "password": password
     };
 
-    return this.http.post(`${environment.api_url}login`, login, {responseType: "text"});
+    return this.http.post(`${environment.api_url}authenticate`, login, {responseType: "text"});
   }
 
   changeLogado(logado: boolean): void {

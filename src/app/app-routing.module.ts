@@ -19,9 +19,10 @@ import {TipoFormComponent} from "./tipo/tipo-form.component";
 import {AuthGuard} from "./guards/auth.guard";
 
 
+
 const routes: Routes = [
   {
-    path: '', component: LoginComponent
+    path: '', component: HomeComponent
   },
   {
     path: 'inicio', component: HomeComponent

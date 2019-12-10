@@ -7,6 +7,12 @@
   </div>
 </header>
 
+<header *ngIf="!taLogado">
+  <div>
+      <p-button icon="pi pi-user"  *ngIf="!usuarioEstaLogado" label="Entrar" class="ui-button-raised" (click)="showDialog()"></p-button>
+  </div>
+</header>
+
 <main>
   <div style="padding-top: 3.5em">
     <div class="container">
@@ -15,7 +21,7 @@
   </div>
 </main>
 <p-toast></p-toast>
-<p-dialog header="Login" [(visible)]="display" (click)="showDialog()" [closable]="true" [style]="{width: '300px', height: '200px'}">
+<p-dialog header="Login" [(visible)]="display" [modal]="true" (click)="showDialog()" [closable]="true" [style]="{width: '300px', height: '200px'}">
   <div class="col">
     <p class="h4">Entrar</p>
     <span style="display: block">

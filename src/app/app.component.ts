@@ -11,18 +11,20 @@ import {Login} from "./login/login";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-
-  subscription: any;
   usuarioEstaLogado: boolean = false;
   title = 'marmitex';
   menuList: MenuItem[];
   @Output() deslogar: EventEmitter<boolean> = new EventEmitter();
   login: Login;
   taLogado: boolean = false;
+  display: boolean = false;
+  token;
 
   constructor(private sidebarService: SidebarService,
               private http: HttpClient,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private httpCliente: HttpClient) {
+    this.token = localStorage.getItem("Authorization");
     this.login = new Login();
     this.menuList = [
       {
@@ -75,7 +77,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.loginService.getLogado().asObservable().subscribe(res => {
       this.taLogado = res;
     });
-    if(this.token){
+    if (this.token){
       this.usuarioEstaLogado = true;
     }else{
       this.usuarioEstaLogado = false;
@@ -98,9 +100,10 @@ export class AppComponent implements OnInit, OnDestroy {
   autenticar() {
     const username = this.login.cpf;
     const senha = this.login.senha;
-    this.httpClient.post<any>("http://localhost:8080/authenticate",
+    this.httpCliente.post<any>("http://localhost:8080/authenticate",
       { "username": username, "password": senha}).subscribe( data => {
         localStorage.setItem('Authorization', (data.token))
       });
+    this.display = false;
   }
 }

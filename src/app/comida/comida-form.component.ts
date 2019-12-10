@@ -34,13 +34,13 @@ export class ComidaFormComponent extends BaseForm<Comida> implements OnInit {
                 private fb: FormBuilder) {
       super(injector, comidaService);
 
-      this.ingredienteService.findAll().subscribe(res => {
+      this.ingredienteService.findAtivos().subscribe(res => {
         this.ingredienteListSuggestions = res.map(ingrediente => {
           return {label: ingrediente.ingredientes, value: ingrediente};
         });
       });
 
-      this.tipoService.findAll().subscribe(res => {
+      this.tipoService.findAtivos().subscribe(res => {
         this.tipoListSuggestions = res.map(tipo => {
           return {label: tipo.tipoComida, value: tipo};
         })
@@ -73,6 +73,7 @@ export class ComidaFormComponent extends BaseForm<Comida> implements OnInit {
   salvar(): void {
     this.objeto.ingredientesList = [];
     for (const ingrediente of this.form.controls.ingredientesList.value) {
+      console.log(ingrediente);
       const comidaIngrediente = new ComidaIngrediente();
       comidaIngrediente.ingrediente = ingrediente;
       this.objeto.ingredientesList.push(comidaIngrediente);
@@ -83,6 +84,8 @@ export class ComidaFormComponent extends BaseForm<Comida> implements OnInit {
       tipoComida.tipo = tipo;
       this.objeto.tipoList.push(tipoComida);
     }
+
+    console.log(this.objeto);
 
     this.comidaService.save(this.objeto).subscribe(res => {
         this.objeto = res;

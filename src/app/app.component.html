@@ -1,53 +1,53 @@
-<header *ngIf="taLogado">
-  <div>
+<header>
+  <div *ngIf="taLogado">
     <p-menubar [model]="menuList">
-      <p-button icon="pi pi-user"  *ngIf="usuarioEstaLogado" label="Sair" class="ui-button-raised" (click)="logout()"></p-button>
-      <p-button icon="pi pi-user"  *ngIf="!usuarioEstaLogado" label="Entrar" class="ui-button-raised" (click)="showDialog()"></p-button>
+      <p-button icon="pi pi-user" label="Sair" class="ui-button-raised" (click)="logout()"></p-button>
     </p-menubar>
   </div>
-</header>
-
-<header *ngIf="!taLogado">
-  <div>
-      <p-button icon="pi pi-user"  *ngIf="!usuarioEstaLogado" label="Entrar" class="ui-button-raised" (click)="showDialog()"></p-button>
+  <div *ngIf="!taLogado" class="m-2" style="position: fixed; right: 0">
+      <p-button icon="pi pi-user" label="Login" class="ui-button-raised" (click)="showDialog()"></p-button>
   </div>
 </header>
 
 <main>
   <div style="padding-top: 3.5em">
     <div class="container">
-        <router-outlet></router-outlet>
+      <p-toast></p-toast>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </main>
-<p-toast></p-toast>
-<p-dialog header="Login" [(visible)]="display" [modal]="true" (click)="showDialog()" [closable]="true" [style]="{width: '300px', height: '200px'}">
+
+<p-dialog header="Login" [(visible)]="display"
+          [modal]="true"
+          [style]="{width: '300px', height: '200px'}"
+          (click)="showDialog()"
+          [closable]="true">
   <div class="col">
-    <p class="h4">Entrar</p>
-    <span style="display: block">
-          <input class="mb-2"
-                 type="password"
-                 [(ngModel)]="login.cpf"
-                 pInputText
-                 placeholder="Cpf">
-        </span>
-    <span style="display: block">
-          <input class="mb-2"
-                 type="password"
-                 [(ngModel)]="login.senha"
-                 pInputText
-                 placeholder="Senha">
-        </span>
-    <span style="display: block">
-          <button pButton type="button"
-                  label="Entrar"
-                  class="ui-button-raised"
-                  (click)="autenticar()"></button>
-        </span>
+    <p class="h4 text-center">Entrar</p>
+    <p>Cpf:</p>
+    <input class=""
+           type="text"
+           pInputText
+           style="width: 100%;"
+           [(ngModel)]="login.cpf">
+    <p>Senha:</p>
+    <input class=""
+           type="password"
+           style="width: 100%;"
+           [(ngModel)]="login.senha"
+           pInputText>
+    <div class="text-center mt-3">
+      <button pButton type="button"
+              label="Entrar"
+              class="ui-button-raised"
+              (click)="autenticar()"></button>
+    </div>
   </div>
-  <div class="mt-2">
-    <span>É novo por aqui? </span><a href="#">Cadastre-se!</a>
+  <div class="text-center mt-3">
+    <p>É novo por aqui?
+      <a [routerLink]="['/cliente/form']">Cadastre-se!</a>
+    </p>
+
   </div>
 </p-dialog>
-
-

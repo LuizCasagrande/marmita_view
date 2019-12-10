@@ -12,6 +12,10 @@ export abstract class BaseService<T> {
     this.endpoint = endpoint;
   }
 
+  findAtivos(): Observable<T[]> {
+    return this.http.get<T[]>(`${this.getUrl()}/ativos`);
+  }
+
   findAll(): Observable<T[]> {
     return this.http.get<T[]>(this.getUrl());
   }

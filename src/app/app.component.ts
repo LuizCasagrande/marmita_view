@@ -1,9 +1,10 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit, Output} from '@angular/core';
 import {SidebarService} from './service/sidebar.service';
 import {MenuItem} from 'primeng';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {LoginService} from "./service/login.service";
 import {Login} from "./login/login";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -11,20 +12,17 @@ import {Login} from "./login/login";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  usuarioEstaLogado: boolean = false;
+
   title = 'marmitex';
   menuList: MenuItem[];
-  @Output() deslogar: EventEmitter<boolean> = new EventEmitter();
   login: Login;
   taLogado: boolean = false;
   display: boolean = false;
-  token;
 
   constructor(private sidebarService: SidebarService,
               private http: HttpClient,
               private loginService: LoginService,
-              private httpCliente: HttpClient) {
-    this.token = localStorage.getItem("Authorization");
+              private router: Router) {
     this.login = new Login();
     this.menuList = [
       {
@@ -74,14 +72,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.taLogado = this.loginService.existeToken();
     this.loginService.getLogado().asObservable().subscribe(res => {
       this.taLogado = res;
     });
-    if (this.token){
-      this.usuarioEstaLogado = true;
-    }else{
-      this.usuarioEstaLogado = false;
-    }
   }
 
   ngOnDestroy(): void {
@@ -89,21 +83,23 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logout() {
     localStorage.removeItem("Authorization");
-    this.deslogar.emit(false);
+    this.loginService.changeLogado(false);
+    this.router.navigate(['/inicio']);
   }
 
   showDialog() {
-    if(!this.display)
-      this.display = true;
+    this.display = true;
   }
 
   autenticar() {
     const username = this.login.cpf;
     const senha = this.login.senha;
-    this.httpCliente.post<any>("http://localhost:8080/authenticate",
-      { "username": username, "password": senha}).subscribe( data => {
-        localStorage.setItem('Authorization', (data.token))
-      });
-    this.display = false;
+    this.loginService.login(username, senha).subscribe(data => {
+      localStorage.setItem('Authorization', data.token);
+      this.loginService.changeLogado(true);
+      this.display = false;
+      this.login = new Login;
+    });
   }
+
 }

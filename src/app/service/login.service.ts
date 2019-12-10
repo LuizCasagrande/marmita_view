@@ -10,8 +10,6 @@ import {environment} from "../../environments/environment";
 })
 export class LoginService extends BaseService<Login> implements OnInit {
   logado: EventEmitter<boolean> = new EventEmitter<boolean>();
-  showDialog: boolean;
-
   constructor(protected http: HttpClient) {
     super(http, 'login');
   }
@@ -24,13 +22,13 @@ export class LoginService extends BaseService<Login> implements OnInit {
     return localStorage.getItem("Authorization") != null;
   }
 
-  login(username: string, password: string): Observable<string> {
+  login(username: string, password: string): Observable<any> {
     const login = {
       "username": username,
       "password": password
     };
 
-    return this.http.post(`${environment.api_url}authenticate`, login, {responseType: "text"});
+    return this.http.post(`${environment.api_url}authenticate`, login);
   }
 
   changeLogado(logado: boolean): void {
@@ -38,10 +36,6 @@ export class LoginService extends BaseService<Login> implements OnInit {
   }
 
   getLogado(): EventEmitter<boolean>{
-    return this.logado;
-  }
-
-  usuarioEstaAutenticado() {
     return this.logado;
   }
 

@@ -1,9 +1,15 @@
-<header>
+<header *ngIf="taLogado">
   <div>
     <p-menubar [model]="menuList">
       <p-button icon="pi pi-user"  *ngIf="usuarioEstaLogado" label="Sair" class="ui-button-raised" (click)="logout()"></p-button>
       <p-button icon="pi pi-user"  *ngIf="!usuarioEstaLogado" label="Entrar" class="ui-button-raised" (click)="showDialog()"></p-button>
     </p-menubar>
+  </div>
+</header>
+
+<header *ngIf="!taLogado">
+  <div>
+      <p-button icon="pi pi-user"  *ngIf="!usuarioEstaLogado" label="Entrar" class="ui-button-raised" (click)="showDialog()"></p-button>
   </div>
 </header>
 
@@ -14,8 +20,8 @@
     </div>
   </div>
 </main>
-
-<p-dialog header="Title" [(visible)]="display" (click)="showDialog()" [style]="{width: '300px', height: '200px'}">
+<p-toast></p-toast>
+<p-dialog header="Login" [(visible)]="display" [modal]="true" (click)="showDialog()" [closable]="true" [style]="{width: '300px', height: '200px'}">
   <div class="col">
     <p class="h4">Entrar</p>
     <span style="display: block">
@@ -43,4 +49,5 @@
     <span>É novo por aqui? </span><a href="#">Cadastre-se!</a>
   </div>
 </p-dialog>
-<p-toast></p-toast>
+
+

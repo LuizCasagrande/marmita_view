@@ -1,19 +1,17 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {LoginService} from "../service/login.service";
-import {Login} from "./login";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: []
 })
 export class LoginComponent {
-  login: Login;
+  @Output() deslogar: EventEmitter<boolean> = new EventEmitter();
 
-  display: boolean = false;
+  constructor( private loginService: LoginService,
+               private httpCliente: HttpClient) {}
 
-  constructor( private loginService: LoginService) {
-    this.login = new Login();
-  }
 
 }

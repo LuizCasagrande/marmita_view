@@ -7,7 +7,7 @@ export abstract class BaseForm<T> {
   public form: FormGroup;
   public objeto: T;
 
-  constructor(public injector: Injector, private baseService: BaseService<T>) {
+  protected constructor(public injector: Injector, private baseService: BaseService<T>) {
     this.injector.get(ActivatedRoute).queryParamMap.subscribe(params => {
       if (params.has('id')) {
         this.baseService.findOne(parseInt(params.get('id'))).subscribe(res => {
@@ -17,6 +17,7 @@ export abstract class BaseForm<T> {
               this.form.controls[name].setValue(res[name]);
             }
           });
+          this.postEdit(res);
         });
       } else {
         this.resetaForm();
@@ -24,7 +25,10 @@ export abstract class BaseForm<T> {
     });
   }
 
-  private resetaForm(): void {
+  protected postEdit(res: T): void {}
+
+  protected resetaForm(): void {
     this.objeto = {} as T;
   }
+
 }

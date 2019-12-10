@@ -1,54 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 <p-card header="Cadastrar Comida">
   <div class="text-right m-2">
-    <button (click)="salvar()"
-            class="ui-button-secondary"
+    <button class="ui-button-secondary"
             label="Salvar"
             pButton
-            type="button"></button>
+            type="submit"
+            [disabled]="!form.valid"></button>
   </div>
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <span class="ui-float-label my-2">
-          <p>Comida</p>
-          <input #comida="ngModel" [(ngModel)]="objeto.comida"
-                 class="form-control" id="comida"
-                 maxlength="100" required>
-          <div *ngIf="comida.invalid"
-               class="alert alert-danger">
-            <div *ngIf="comida.errors.required">
-              Nome para comida é obrigatório.
-            </div>
-          </div>
-        </span>
-      </div>
-      <div class="col-12">
-        <span class="ui-float-label my-2">
-          <p-checkbox [(ngModel)]="objeto.inativo"
-                      binary="true"
-                      label="Inativo"></p-checkbox>
-        </span>
-      </div>
-      <div class="col-12">
-        <span class="ui-float-label my-2">
-            <p>Ingredientes:</p>
-            <p-multiSelect [(ngModel)]="ingredientesList"
-                           [options]="ingredienteListSuggestions"
-                           [panelStyle]="{width:'15em'}"
-                           defaultLabel="Selecione"
-                           maxSelectedLabels="5"></p-multiSelect>
-        </span>
-      </div>
-      <div class="col-12">
-        <span class="ui-float-label my-2">
-            <p>Tipos:</p>
-            <p-multiSelect [(ngModel)]="tipoList"
-                           [options]="tipoListSuggestions"
-                           [panelStyle]="{width:'15em'}"
-                           defaultLabel="Selecione"
-                           maxSelectedLabels="5"></p-multiSelect>
-        </span>
-      </div>
+    <div class="ui-grid-col-12">
+      Comida:
+    </div>
+    <div class="ui-grid-col-12">
+      <input pInputText type="text" maxlength="100" formControlName="comida">
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo comida é obrigatório"
+                 *ngIf="!form.controls['comida'].valid&&form.controls['comida'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12 mt-2 mb-2">
+      <p-checkbox formControlName="inativo"
+                  binary="true"
+                  label="Inativo"></p-checkbox>
+    </div>
+    <div class="ui-grid-col-12">
+      <p>Ingredientes:</p>
+      <p-multiSelect formControlName="ingredientesList"
+                     [options]="ingredienteListSuggestions"
+                     [panelStyle]="{width:'15em'}"
+                     defaultLabel="Selecione"
+                     maxSelectedLabels="5"></p-multiSelect>
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo ingredientes é obrigatório"
+                 *ngIf="!form.controls['ingredientesList'].valid&&form.controls['ingredientesList'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12">
+      <p>Tipos:</p>
+      <p-multiSelect formControlName="tipoList"
+                     [options]="tipoListSuggestions"
+                     [panelStyle]="{width:'15em'}"
+                     defaultLabel="Selecione"
+                     maxSelectedLabels="5"></p-multiSelect>
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo tipos é obrigatório"
+                 *ngIf="!form.controls['tipoList'].valid&&form.controls['tipoList'].dirty"></p-message>
     </div>
   </div>
+  <div style="clear: both"></div>
 </p-card>
+</form>

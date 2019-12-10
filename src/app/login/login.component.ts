@@ -5,11 +5,10 @@ import {Login} from "./login";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: []
 })
 export class LoginComponent {
   login: Login;
-
   display: boolean = false;
 
   constructor( private loginService: LoginService) {

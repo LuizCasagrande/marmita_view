@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="taLogado">
   <div>
     <p-menubar [model]="menuList">
       <p-button icon="pi pi-user"  *ngIf="usuarioEstaLogado" label="Sair" class="ui-button-raised" (click)="logout()"></p-button>

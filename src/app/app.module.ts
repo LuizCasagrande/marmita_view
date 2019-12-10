@@ -44,7 +44,7 @@ import {registerLocaleData} from '@angular/common';
 import { TipoListComponent } from './tipo/tipo-list.component';
 import {TipoFormComponent} from "./tipo/tipo-form.component";
 import { AlergiaFormComponent } from './alergia/alergia-form.component';
-import { FavoritoFormComponent } from './favorito/favorito-form..component';
+import { FavoritoFormComponent } from './favorito/favorito-form.component';
 import { DetestadaComponent } from './detestada/detestada.component';
 import { TamanhoPedidoComponent } from './pedido/tamanho-pedido/tamanho-pedido.component';
 

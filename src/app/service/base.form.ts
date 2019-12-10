@@ -1,0 +1,30 @@
+import {FormGroup} from "@angular/forms";
+import {ActivatedRoute} from "@angular/router";
+import {BaseService} from "./base.service";
+import {Injector} from "@angular/core";
+
+export abstract class BaseForm<T> {
+  public form: FormGroup;
+  public objeto: T;
+
+  constructor(public injector: Injector, private baseService: BaseService<T>) {
+    this.injector.get(ActivatedRoute).queryParamMap.subscribe(params => {
+      if (params.has('id')) {
+        this.baseService.findOne(parseInt(params.get('id'))).subscribe(res => {
+          this.objeto = res;
+          Object.keys(res).forEach(name => {
+            if (this.form.controls[name]) {
+              this.form.controls[name].setValue(res[name]);
+            }
+          });
+        });
+      } else {
+        this.resetaForm();
+      }
+    });
+  }
+
+  private resetaForm(): void {
+    this.objeto = {} as T;
+  }
+}

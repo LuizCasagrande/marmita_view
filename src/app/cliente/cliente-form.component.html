@@ -1,11 +1,11 @@
-<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 <p-card header="Cadastro de Clientes">
   <div class="text-right m-2">
     <button class="ui-button-secondary"
             label="Salvar"
             pButton
             type="submit"
-            [disabled]="!userform.valid"></button>
+            [disabled]="!form.valid"></button>
   </div>
   <div class="container">
     <div class="ui-grid-col-12">
@@ -16,7 +16,7 @@
     </div>
     <div class="ui-grid-col-12">
       <p-message severity="error" text="o campo cliente é obrigatório"
-                 *ngIf="!userform.controls['nome'].valid&&userform.controls['nome'].dirty"></p-message>
+                 *ngIf="!form.controls['nome'].valid&&form.controls['nome'].dirty"></p-message>
     </div>
     <div class="ui-grid-col-12">
       Cpf:
@@ -26,7 +26,7 @@
     </div>
     <div class="ui-grid-col-12">
       <p-message severity="error" text="o campo cpf é obrigatório"
-                 *ngIf="!userform.controls['cpf'].valid&&userform.controls['cpf'].dirty"></p-message>
+                 *ngIf="!form.controls['cpf'].valid&&form.controls['cpf'].dirty"></p-message>
     </div>
     <div class="ui-grid-col-12">
       Senha:
@@ -35,8 +35,8 @@
       <input pInputText type="password" maxlength="10" formControlName="senha">
     </div>
     <div class="ui-grid-col-12">
-      <p-message severity="error" text="o campo senha é obrigatório"
-                 *ngIf="!userform.controls['senha'].valid&&userform.controls['senha'].dirty"></p-message>
+      <p-message severity="error" [text]="form.controls['senha'].errors['required'] ? 'o campo senha é obrigatório' : form.controls['senha'].errors['minlength'] ? 'Tem que ter mais de 6 caracteres' : ''"
+                 *ngIf="!form.controls['senha'].valid&&form.controls['senha'].dirty"></p-message>
     </div>
     <div class="ui-grid-col-12">
       Telefone:
@@ -46,7 +46,7 @@
     </div>
     <div class="ui-grid-col-12">
       <p-message severity="error" text="o campo telefone é obrigatório"
-                 *ngIf="!userform.controls['telefone'].valid&&userform.controls['telefone'].dirty"></p-message>
+                 *ngIf="!form.controls['telefone'].valid&&form.controls['telefone'].dirty"></p-message>
     </div>
     <div class="ui-grid-col-12">
       Rua:
@@ -56,7 +56,7 @@
     </div>
     <div class="ui-grid-col-12">
       <p-message severity="error" text="o campo rua é obrigatório"
-                 *ngIf="!userform.controls['logradouro'].valid&&userform.controls['logradouro'].dirty"></p-message>
+                 *ngIf="!form.controls['logradouro'].valid&&form.controls['logradouro'].dirty"></p-message>
     </div>
     <div class="ui-grid-col-12">
       Número:
@@ -66,7 +66,7 @@
     </div>
     <div class="ui-grid-col-12">
       <p-message severity="error" text="o campo número é obrigatório"
-                 *ngIf="!userform.controls['numero'].valid&&userform.controls['numero'].dirty"></p-message>
+                 *ngIf="!form.controls['numero'].valid&&form.controls['numero'].dirty"></p-message>
     </div>
     <div class="ui-grid-col-12">
       Bairro:
@@ -76,7 +76,7 @@
     </div>
     <div class="ui-grid-col-12">
       <p-message severity="error" text="o campo bairro é obrigatório"
-                 *ngIf="!userform.controls['bairro'].valid&&userform.controls['bairro'].dirty"></p-message>
+                 *ngIf="!form.controls['bairro'].valid&&form.controls['bairro'].dirty"></p-message>
     </div>
     <div class="ui-grid-col-12">
       Cep:
@@ -86,7 +86,7 @@
     </div>
     <div class="ui-grid-col-12">
       <p-message severity="error" text="o campo cep é obrigatório"
-                 *ngIf="!userform.controls['cep'].valid&&userform.controls['cep'].dirty"></p-message>
+                 *ngIf="!form.controls['cep'].valid&&form.controls['cep'].dirty"></p-message>
     </div>
   </div>
   <div style="clear: both"></div>

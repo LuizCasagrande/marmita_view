@@ -1,54 +1,39 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MessageService} from 'primeng';
 import {Cliente} from './cliente';
 import {ClienteService} from '../service/cliente.service';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {BaseForm} from "../service/base.form";
 
 @Component({
   selector: 'app-cliente-form',
   templateUrl: './cliente-form.component.html',
   styleUrls: []
 })
-export class ClienteFormComponent implements OnInit {
+export class ClienteFormComponent extends BaseForm<Cliente> implements OnInit {
 
-  objeto: Cliente;
-  userform: FormGroup;
   submitted: boolean;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(public injector: Injector,
               private clienteService: ClienteService,
               private router: Router,
               private messageService: MessageService,
               private fb: FormBuilder) {
+    super(injector, clienteService);
   }
 
   ngOnInit() {
-
-    this.userform = this.fb.group({
+    this.form = this.fb.group({
+      'id': new FormControl(''),
       'nome': new FormControl('', Validators.required),
       'cpf': new FormControl('', Validators.required),
-      'senha': new FormControl('', Validators.required),
+      'senha': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
       'telefone': new FormControl('', Validators.required),
       'logradouro': new FormControl('', Validators.required),
       'numero': new FormControl('', Validators.required),
       'bairro': new FormControl('', Validators.required),
       'cep': new FormControl('', Validators.required),
-    });
-
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      if (params.has('id')) {
-        this.clienteService.findOne(parseInt(params.get('id'))).subscribe(res => {
-          this.objeto = res;
-          Object.keys(res).forEach(name => {
-            if (this.userform.controls[name]) {
-              this.userform.controls[name].setValue(res[name]);
-            }
-          });
-        });
-      } else {
-        this.resetaForm();
-      }
     });
   }
 
@@ -68,10 +53,6 @@ export class ClienteFormComponent implements OnInit {
         summary: erro.error.message
       });
     });
-  }
-
-  private resetaForm(): void {
-    this.objeto = new Cliente();
   }
 
   onSubmit(value: Cliente) {

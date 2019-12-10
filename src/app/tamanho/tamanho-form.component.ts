@@ -1,33 +1,34 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MessageService} from 'primeng';
 import {Tamanho} from './tamanho';
 import {TamanhoService} from '../service/tamanho.service';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {BaseForm} from "../service/base.form";
 
 @Component({
   selector: 'app-tamanho',
   templateUrl: './tamanho-form.component.html',
   styleUrls: []
 })
-export class TamanhoFormComponent implements OnInit {
+export class TamanhoFormComponent extends BaseForm<Tamanho> implements OnInit {
 
-  objeto: Tamanho;
+  submitted: boolean;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(public injector: Injector,
               private tamanhoService: TamanhoService,
               private router: Router,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private fb: FormBuilder) {
+    super(injector, tamanhoService);
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      if (params.has('id')) {
-        this.tamanhoService.findOne(parseInt(params.get('id'))).subscribe(res => {
-          this.objeto = res;
-        });
-      } else {
-        this.resetaForm();
-      }
+    this.form = this.fb.group({
+      'id': new FormControl(''),
+      'peso': new FormControl('', Validators.required),
+      'inativo': new FormControl(''),
+      'preco': new FormControl('', Validators.required),
     });
   }
 
@@ -49,8 +50,8 @@ export class TamanhoFormComponent implements OnInit {
     });
   }
 
-  private resetaForm(): void {
-    this.objeto = new Tamanho();
+  onSubmit(value: Tamanho) {
+    this.objeto = value;
+    this.salvar();
   }
-
 }

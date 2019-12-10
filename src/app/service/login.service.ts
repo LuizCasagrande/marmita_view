@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {EventEmitter, Injectable, OnInit} from '@angular/core';
 import {BaseService} from "./base.service";
 import {Login} from "../login/login";
 import {HttpClient} from "@angular/common/http";
@@ -8,12 +8,20 @@ import {environment} from "../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService extends BaseService<Login>{
+export class LoginService extends BaseService<Login> implements OnInit {
   logado: EventEmitter<boolean> = new EventEmitter<boolean>();
   showDialog: boolean;
 
   constructor(protected http: HttpClient) {
     super(http, 'login');
+  }
+
+  ngOnInit(): void {
+    this.getLogado().emit(this.existeToken());
+  }
+
+  existeToken(): boolean {
+    return localStorage.getItem("Authorization") != null;
   }
 
   login(username: string, password: string): Observable<string> {
@@ -30,6 +38,10 @@ export class LoginService extends BaseService<Login>{
   }
 
   getLogado(): EventEmitter<boolean>{
+    return this.logado;
+  }
+
+  usuarioEstaAutenticado() {
     return this.logado;
   }
 

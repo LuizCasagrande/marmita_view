@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {SidebarService} from './service/sidebar.service';
 import {MenuItem} from 'primeng';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginService} from "./service/login.service";
 import {Login} from "./login/login";
 
@@ -11,19 +11,18 @@ import {Login} from "./login/login";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+
+  subscription: any;
   usuarioEstaLogado: boolean = false;
   title = 'marmitex';
   menuList: MenuItem[];
   @Output() deslogar: EventEmitter<boolean> = new EventEmitter();
   login: Login;
-  display: boolean = false;
-  token;
+  taLogado: boolean = false;
 
   constructor(private sidebarService: SidebarService,
               private http: HttpClient,
-              private loginService: LoginService,
-              private httpClient: HttpClient) {
-    this.token =  localStorage.getItem('Authorization');
+              private loginService: LoginService) {
     this.login = new Login();
     this.menuList = [
       {
@@ -73,6 +72,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.loginService.getLogado().asObservable().subscribe(res => {
+      this.taLogado = res;
+    });
     if(this.token){
       this.usuarioEstaLogado = true;
     }else{

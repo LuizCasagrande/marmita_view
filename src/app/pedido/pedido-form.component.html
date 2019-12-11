@@ -6,15 +6,9 @@
             pButton
             type="button"></button>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <label>Data de Emissão</label>
-        <span class="ui-float-label my-2">
-           <p-calendar dateFormat="dd/mm/yy" [(ngModel)]="objeto.data" [showIcon]="true"></p-calendar>
-        </span>
-      </div>
-    </div>
+  <div class="col-12">
+    <p>Dia da semana:</p>
+    <p-dropdown [options]="diaOpcao" [(ngModel)]="objeto.diaSemana"></p-dropdown>
   </div>
 </p-card>
 <p-card header="Tamanhos do Pedido">
@@ -35,7 +29,7 @@
         <ng-template let-item pTemplate="body" let-rowIndex="rowIndex">
           <tr>
             <td>{{item?.tamanho?.peso }}</td>
-            <td>{{item?.quantidade | currency: 'BRL'}}</td>
+            <td>{{item?.quantidade}}</td>
           </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">

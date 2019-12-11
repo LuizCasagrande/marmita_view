@@ -33,14 +33,6 @@ export class PedidoListComponent extends ListComponent<Pedido> implements OnInit
     });
   }
 
-  excluir(id: number): void {
-    this.confirmationService.confirm({
-      message: 'Você tem certeza que deseja excluir esse pedido?',
-      accept: () => this.deletar(id),
-      acceptLabel: 'SIM',
-      rejectLabel: 'NÃO',
-    });
-  }
 
   private deletar(id: number): void {
     this.loading = true;

@@ -47,6 +47,8 @@ import { AlergiaFormComponent } from './alergia/alergia-form.component';
 import { FavoritoFormComponent } from './favorito/favorito-form.component';
 import { DetestadaComponent } from './detestada/detestada.component';
 import { TamanhoPedidoComponent } from './pedido/tamanho-pedido/tamanho-pedido.component';
+import { RelatorioClienteComponent } from './relatorio-cliente/relatorio-cliente.component';
+import { RelatorioEmpresaComponent } from './relatorio-empresa/relatorio-empresa.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -76,7 +78,9 @@ registerLocaleData(localePt, 'pt');
     AlergiaFormComponent,
     FavoritoFormComponent,
     DetestadaComponent,
-    TamanhoPedidoComponent
+    TamanhoPedidoComponent,
+    RelatorioClienteComponent,
+    RelatorioEmpresaComponent
   ],
   imports: [
     BrowserModule,

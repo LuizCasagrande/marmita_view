@@ -20,6 +20,7 @@ export class PedidoFormComponent extends FormComponent<Pedido> implements OnInit
   menuItem: MenuItem[];
   displayItem: boolean = false;
   @Output() onClose = new EventEmitter<void>();
+  diaOpcao: SelectItem[];
 
   constructor(private activatedRoute: ActivatedRoute,
               private pedidoService: PedidoService,
@@ -27,6 +28,14 @@ export class PedidoFormComponent extends FormComponent<Pedido> implements OnInit
               private router: Router,
               private messageService: MessageService) {
     super();
+    this.diaOpcao = [
+      {label: 'Selecione:', value: null},
+      {label:'Segunda', value: 'SEGUNDA'},
+      {label:'Terça', value: 'TERCA'},
+      {label:'Quarta', value: 'QUARTA'},
+      {label:'Quinta', value: 'QUINTA'},
+      {label:'Sexta', value: 'SEXTA'},
+    ];
     this.tamanhoService.findAll().subscribe(tamanhos => this.tamanhos = tamanhos);
     this.menuItem = [
       {

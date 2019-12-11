@@ -11,17 +11,28 @@
       <tr class="text-center">
         <th>Id</th>
         <th>Data pedido</th>
-        <th>Tamanho da marmita</th>
-        <th>Status do pedido</th>
+        <th>Dia da semana</th>
+        <th>Pago</th>
         <th>Cancelado</th>
-        <th>Valor total</th>
+        <th>Cliente</th>
+        <th>Ações</th>
+
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-objeto>
       <tr class="text-center">
         <td>{{objeto.id}}</td>
         <td>{{objeto.data}}</td>
-        <td>aq vai ter tamanho</td>
+        <td>{{objeto.diaSemana}}</td>
+        <td>
+        <p-checkbox [(ngModel)]="objeto.pago" disabled="true"></p-checkbox>
+        </td>
+        <td>
+          <p-checkbox [(ngModel)]="objeto.status" disabled="true"></p-checkbox>
+        </td>
+
+        <td>{{objeto.cliente.nome}}</td>
+
         <td>
           <i [queryParams]="{id: objeto['id']}"
              [routerLink]="['form']"

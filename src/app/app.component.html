@@ -1,7 +1,8 @@
 <header>
   <div *ngIf="taLogado">
     <p-menubar [model]="menuList">
-      <p-button icon="pi pi-user" label="Sair" styleClass="ui-button-secondary" (click)="logout()"></p-button>
+      <p-confirmDialog header="Sair" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+      <p-button icon="pi pi-user" label="Sair" styleClass="ui-button-secondary" (click)="confirmaLogout()"></p-button>
     </p-menubar>
   </div>
   <div *ngIf="!taLogado" class="m-2" style="position: fixed; right: 0">
@@ -21,7 +22,6 @@
 <p-dialog header="Login" [(visible)]="display"
           [modal]="true"
           [style]="{width: '300px', height: '200px'}"
-          (click)="showDialog()"
           [closable]="true">
   <div class="col">
     <p class="h4 text-center">Entrar</p>

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, Output} from '@angular/core';
 import {SidebarService} from './service/sidebar.service';
-import {MenuItem} from 'primeng';
+import {ConfirmationService, MenuItem} from 'primeng';
 import {HttpClient} from "@angular/common/http";
 import {LoginService} from "./service/login.service";
 import {Login} from "./login/login";
@@ -22,7 +22,11 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private sidebarService: SidebarService,
               private http: HttpClient,
               private loginService: LoginService,
-              private router: Router) {
+              private router: Router,
+              private confirmationService: ConfirmationService) {
+    this.loginService.abrirLogin.asObservable().subscribe(() => {
+      this.display = true;
+    });
     this.login = new Login();
     this.menuList = [
       {
@@ -102,4 +106,14 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
+  confirmaLogout() {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que quer sair ?',
+      acceptLabel: 'Sim',
+      rejectLabel: 'Não',
+      accept: () => {
+        this.logout();
+      }
+    });
+  }
 }

@@ -3,7 +3,8 @@
   <div class="p-5" style="position: relative; background-color: white; width: 300px; top: -500px;
         left: 60px">
     <h2>Marmita do Dia</h2>
-    <button class="btn btn-primary">Fazer pedido agora mesmo!</button>
+    <button *ngIf="taLogado" [routerLink]="['/pedido/form']" class="btn btn-primary">Fazer pedido agora mesmo!</button>
+    <button *ngIf="!taLogado" (click)="logar()" class="btn btn-primary">Fazer pedido agora mesmo!</button>
   </div>
 </div>
 

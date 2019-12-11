@@ -46,7 +46,7 @@ import {TipoFormComponent} from "./tipo/tipo-form.component";
 import { AlergiaFormComponent } from './alergia/alergia-form.component';
 import { FavoritoFormComponent } from './favorito/favorito-form.component';
 import { DetestadaComponent } from './detestada/detestada.component';
-import { TamanhoPedidoComponent } from './pedido/tamanho-pedido/tamanho-pedido.component';
+import { TamanhoPedidoComponent } from './pedido/tamanho-pedido.component';
 
 registerLocaleData(localePt, 'pt');
 

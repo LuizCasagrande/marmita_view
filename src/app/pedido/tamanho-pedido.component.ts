@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TamanhoPedido} from "./tamanho-pedido";
-import {Tamanho} from "../../tamanho/tamanho";
-import {TamanhoService} from "../../service/tamanho.service";
+import {Tamanho} from "../tamanho/tamanho";
+import {TamanhoService} from "../service/tamanho.service";
 
 @Component({
   selector: 'app-tamanho-pedido',
@@ -30,6 +30,7 @@ export class TamanhoPedidoComponent implements OnInit {
   }
 
   salvarItem(): void {
+    this.objeto.valorTotal = this.objeto.tamanho.preco * this.objeto.quantidade;
     this.onSalvar.emit(this.objeto);
     this.onClose.emit();
     this.resetaForm();

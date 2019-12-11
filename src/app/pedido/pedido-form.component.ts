@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MenuItem, MessageService, SelectItem} from "primeng";
 import {Pedido} from "./pedido";
 import {PedidoService} from "../service/pedido.service";
-import {TamanhoPedido} from "./tamanho-pedido/tamanho-pedido";
+import {TamanhoPedido} from "./tamanho-pedido";
 import {FormComponent} from "../component/form.component";
 import {TamanhoService} from "../service/tamanho.service";
 import {Tamanho} from "../tamanho/tamanho";
@@ -21,6 +21,7 @@ export class PedidoFormComponent extends FormComponent<Pedido> implements OnInit
   displayItem: boolean = false;
   @Output() onClose = new EventEmitter<void>();
   diaOpcao: SelectItem[];
+  total: number = 0;
 
   constructor(private activatedRoute: ActivatedRoute,
               private pedidoService: PedidoService,
@@ -65,19 +66,18 @@ export class PedidoFormComponent extends FormComponent<Pedido> implements OnInit
 
   preSave(): void {
     const erros: string[] = [];
-
-
     if (!(this.objeto.tamanhoPedidoList.length > 0)) {
-      erros.push('Adicione ao menos um item ao pedido.');
+      erros.push('Adicione ao menos um item!');
     }
-
+    if (this.objeto.diaSemana == null) {
+      erros.push('Informe o dia da semana!');
+    }
     if (erros.length) {
       this.messageService.add({
         severity: 'error',
-        summary: 'Atenção',
+        summary: 'Erro',
         detail: erros[0],
       });
-
       throw new Error(erros[0]);
     }
   }
@@ -109,11 +109,24 @@ export class PedidoFormComponent extends FormComponent<Pedido> implements OnInit
 
   adicionaItem(tamanhoPedido: TamanhoPedido) {
     this.objeto.tamanhoPedidoList.push(tamanhoPedido);
+    this.calcularTotal();
   }
 
+  calcularTotal(): void {
+    this.objeto.valorTotal = 0;
+    for (const tamanhoPedido1 of this.objeto.tamanhoPedidoList) {
+      this.objeto.valorTotal += tamanhoPedido1.valorTotal;
+    }
+  }
 
   novoItem() {
     this.displayItem = true;
   }
+
+  excluir(rowIndex: number) {
+    this.objeto.tamanhoPedidoList.splice(rowIndex, 1);
+    this.calcularTotal();
+  }
+
 }
 

@@ -1,37 +1,61 @@
-<p-card header="Cadastrar Cardapio">
-<div class="container">
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+<p-card>
+  <header *ngIf="objeto.id == null" style="font-size: 1.5em; font-weight: bold;">Cadastrar Cardapio</header>
+  <header *ngIf="objeto.id != null" style="font-size: 1.5em; font-weight: bold;">Visualizar Cardapio</header>
   <div class="text-right m-2">
-    <button (click)="salvar()"
-            class="ui-button-raised"
+    <button *ngIf="objeto.id == null"
+            class="ui-button-rised"
             label="Salvar"
             pButton
-            type="button"></button>
+            type="submit"
+            [disabled]="!form.valid"></button>
+    <button *ngIf="objeto.id != null"
+            class="ui-button-rised"
+            label="Voltar"
+            pButton
+            (click)="voltar()"></button>
   </div>
-  <div class="col-12">
-    <p>Nome do Cardapio</p>
-    <input [(ngModel)]="objeto.cardapio"
-           pInputText
-           type="text">
+  <div class="container">
+    <div class="ui-grid-col-12">
+      Nome do Cardápio:
+    </div>
+    <div class="ui-grid-col-12">
+      <input pInputText type="text" maxlength="100" formControlName="cardapio">
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo cardápio é obrigatório"
+                 *ngIf="!form.controls['cardapio'].valid&&form.controls['cardapio'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12">
+      Dia da Semana:
+    </div>
+    <div class="ui-grid-col-12">
+      <p-dropdown [options]="diaOpcao" formControlName="diaSemana"></p-dropdown>
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo dia da semana é obrigatório"
+                 *ngIf="!form.controls['diaSemana'].valid&&form.controls['diaSemana'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12">
+      Comidas:
+    </div>
+    <div class="ui-grid-col-12">
+      <p-multiSelect [options]="comidaListSuggestions"
+                     formControlName="cardapioComidaList"
+                     defaultLabel="Selecione:"></p-multiSelect>
+    </div>
+    <div class="ui-grid-col-12">
+      <p-message severity="error" text="o campo comida é obrigatório"
+                 *ngIf="!form.controls['cardapioComidaList'].valid&&form.controls['cardapioComidaList'].dirty"></p-message>
+    </div>
+    <div class="ui-grid-col-12">
+      <p-checkbox formControlName="inativo"
+                  binary="true"
+                  label="Inativo"></p-checkbox>
+    </div>
   </div>
-  <div class="col-12">
-    <p-checkbox [(ngModel)]="objeto.inativo"
-                binary="true"
-                label="Inativo"></p-checkbox>
-
-  </div>
-  <div class="col-12">
-    <p>Dia da semana:</p>
-    <p-dropdown [options]="diaOpcao" [(ngModel)]="objeto.diaSemana"></p-dropdown>
-  </div>
-
-  <div class="col-12">
-    <p>Comidas:</p>
-    <p-multiSelect [options]="comidaListSuggestions"
-                   [(ngModel)]="objeto.cardapioComidaList"
-                   defaultLabel="Selecione:"></p-multiSelect>
-  </div>
-
-</div>
+  <div style="clear: both"></div>
 </p-card>
+</form>
 
 

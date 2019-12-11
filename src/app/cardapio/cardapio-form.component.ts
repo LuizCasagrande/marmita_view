@@ -1,30 +1,34 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, Injector, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {MessageService, SelectItem} from 'primeng';
 import {Cardapio} from './cardapio';
 import {CardapioService} from '../service/cardapio.service';
 import {Comida} from "../comida/comida";
 import {ComidaService} from "../service/comida.service";
-import {ComidaIngrediente} from "../comida/comidaIngrediente";
 import {CardapioComida} from "./cardapioComida";
+import {BaseForm} from "../service/base.form";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-cardapio-form',
   templateUrl: './cardapio-form.component.html',
   styleUrls: []
 })
-export class CardapioFormComponent implements OnInit {
+export class CardapioFormComponent extends BaseForm<Cardapio> implements OnInit {
 
   objeto: Cardapio;
+
   diaOpcao: SelectItem[];
   comidaListSuggestions: SelectItem[];
   comidaList: Comida[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(public injector: Injector,
               private cardapioService: CardapioService,
               private router: Router,
               private messageService: MessageService,
-              private comidaService: ComidaService) {
+              private comidaService: ComidaService,
+              private fb: FormBuilder) {
+    super(injector, cardapioService);
     this.diaOpcao = [
       {label: 'Selecione:', value: null},
       {label:'Segunda', value: 'SEGUNDA'},
@@ -43,15 +47,12 @@ export class CardapioFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      if (params.has('id')) {
-        this.cardapioService.findOne(parseInt(params.get('id'))).subscribe(res => {
-          this.objeto = res;
-          this.postEdit(res);
-        });
-      } else {
-        this.resetaForm();
-      }
+    this.form = this.fb.group({
+      'id': new FormControl(''),
+      'inativo': new FormControl(''),
+      'cardapio': new FormControl('', Validators.required),
+      'diaSemana': new FormControl('', Validators.required),
+      'cardapioComidaList': new FormControl('', Validators.required),
     });
   }
 
@@ -60,13 +61,12 @@ export class CardapioFormComponent implements OnInit {
     for (const comida of this.objeto.cardapioComidaList) {
       this.comidaList.push(comida.comida);
     }
-    // this.form.controls['comidaList'].setValue(this.comidaList);
+    this.form.controls['comidaList'].setValue(this.comidaList);
   }
 
   salvar(): void {
-
     this.objeto.cardapioComidaList = [];
-    for (const comida of this.comidaList) {
+    for (const comida of this.form.controls.comidaList.value) {
       const comidaCardapio = new CardapioComida();
       comidaCardapio.comida = comida;
       this.objeto.cardapioComidaList.push(comidaCardapio);
@@ -89,8 +89,12 @@ export class CardapioFormComponent implements OnInit {
     });
   }
 
-  private resetaForm(): void {
-    this.objeto = new Cardapio();
+  onSubmit(value: Cardapio) {
+    this.objeto = value;
+    this.salvar();
   }
 
+  voltar() {
+    this.router.navigateByUrl('cardapio')
+  }
 }

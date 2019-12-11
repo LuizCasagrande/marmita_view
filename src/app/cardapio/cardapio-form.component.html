@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 <p-card>
-  <header *ngIf="objeto.id == null" style="font-size: 1.5em; font-weight: bold;">Cadastrar Cardapio</header>
-  <header *ngIf="objeto.id != null" style="font-size: 1.5em; font-weight: bold;">Visualizar Cardapio</header>
+  <header *ngIf="objeto.id == null" style="font-size: 1.5em; font-weight: bold;">Cadastrar Cardápio</header>
+  <header *ngIf="objeto.id != null" style="font-size: 1.5em; font-weight: bold;">Visualizar Cardápio</header>
   <div class="text-right m-2">
     <button *ngIf="objeto.id == null"
             class="ui-button-rised"

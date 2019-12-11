@@ -67,7 +67,7 @@ export class PedidoFormComponent extends FormComponent<Pedido> implements OnInit
   preSave(): void {
     const erros: string[] = [];
     if (!(this.objeto.tamanhoPedidoList.length > 0)) {
-      erros.push('Adicione ao menos um item!');
+      erros.push('Adicione ao menos uma marmita!');
     }
     if (this.objeto.diaSemana == null) {
       erros.push('Informe o dia da semana!');

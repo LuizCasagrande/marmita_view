@@ -59,12 +59,12 @@ export class CardapioFormComponent extends BaseForm<Cardapio> implements OnInit 
     for (const comida of this.objeto.cardapioComidaList) {
       this.comidaList.push(comida.comida);
     }
-    this.form.controls['comidaList'].setValue(this.comidaList);
+    this.form.controls['cardapioComidaList'].setValue(this.comidaList);
   }
 
   salvar(): void {
     this.objeto.cardapioComidaList = [];
-    for (const comida of this.form.controls.comidaList.value) {
+    for (const comida of this.form.controls.cardapioComidaList.value) {
       const comidaCardapio = new CardapioComida();
       comidaCardapio.comida = comida;
       this.objeto.cardapioComidaList.push(comidaCardapio);

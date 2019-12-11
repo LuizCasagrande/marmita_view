@@ -54,7 +54,6 @@ export class PedidoFormComponent extends FormComponent<Pedido> implements OnInit
   ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe(params => {
       if (params.has('id')) {
-        // tslint:disable-next-line:radix
         this.pedidoService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
         });

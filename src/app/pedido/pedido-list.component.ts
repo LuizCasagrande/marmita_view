@@ -4,6 +4,7 @@ import {Pedido} from './pedido';
 import {PedidoService} from '../service/pedido.service';
 import {ConfirmationService, MessageService} from 'primeng';
 import {Title} from '@angular/platform-browser';
+import { error } from 'util';
 
 @Component({
   selector: 'app-pedido-list',
@@ -28,30 +29,8 @@ export class PedidoListComponent extends ListComponent<Pedido> implements OnInit
     this.loading = true;
     this.pedidoService.findAll().subscribe(res => {
       this.lista = res;
-      console.log(this.lista);
-      setTimeout(() => this.loading = false);
-    });
-  }
-
-
-  private deletar(id: number): void {
-    this.loading = true;
-    this.pedidoService.delete(id).subscribe(() => {
-      this.carregarLista();
-
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Deletado com sucesso!'
-      });
-      setTimeout(() => this.loading = false);
-    }, error => {
-      this.messageService.add({
-        severity: 'error',
-        summary: error.error.message
-      });
       setTimeout(() => this.loading = false);
     });
   }
 
 }
-

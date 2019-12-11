@@ -1,0 +1,27 @@
+<div class="row ui-button-text-icon-left" style="margin: 0">
+  <div class="col-12">
+    <p class="mt-2">Tamanho</p>
+    <p-dropdown [(ngModel)]="objeto.tamanho"
+                [options]="tamanhos"
+                [showClear]="true"
+                optionLabel="peso"
+                appendTo="body"
+                placeholder="Selecione:"></p-dropdown>
+  </div>
+
+  <div class="col-12 mt-3">
+    <p>Quantidade:</p>
+    <input [(ngModel)]="objeto.quantidade"
+           pInputText
+           style="width: 12.5em"
+           type="number">
+  </div>
+
+  <div class="col-12 mt-3 mb-3">
+    <button (click)="salvarItem()" class="ui-button-raised"
+            label="Adicionar"
+            pButton
+            type="button"></button>
+  </div>
+</div>
+

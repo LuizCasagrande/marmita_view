@@ -12,6 +12,7 @@
         <th>Id</th>
         <th>Data</th>
         <th>Dia da semana</th>
+        <th>Total</th>
         <th>Já Pago</th>
         <th>Cliente</th>
         <th>Ações</th>
@@ -22,6 +23,7 @@
         <td>{{objeto.id}}</td>
         <td>{{objeto.data}}</td>
         <td>{{objeto.diaSemana}}</td>
+        <td>{{objeto.valorTotal | currency: 'BRL'}}</td>
         <td>
           <p-checkbox [(ngModel)]="objeto.status" disabled="true"></p-checkbox>
         </td>

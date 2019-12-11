@@ -5,7 +5,7 @@ export class TamanhoPedido {
   id:number;
   tamanho:Tamanho;
   pedido:Pedido;
-  quantidade: number;
+  quantidade: number = 1;
   preco: number;
   valorTotal: number;
 }

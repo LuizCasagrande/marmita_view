@@ -7,7 +7,7 @@ import {TamanhoService} from "../service/tamanho.service";
 @Component({
   selector: 'app-tamanho-pedido',
   templateUrl: './tamanho-pedido.component.html',
-  styleUrls: ['./tamanho-pedido.component.scss']
+  styleUrls: []
 })
 export class TamanhoPedidoComponent implements OnInit {
 

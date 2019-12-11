@@ -73,7 +73,6 @@ export class ComidaFormComponent extends BaseForm<Comida> implements OnInit {
   salvar(): void {
     this.objeto.ingredientesList = [];
     for (const ingrediente of this.form.controls.ingredientesList.value) {
-      console.log(ingrediente);
       const comidaIngrediente = new ComidaIngrediente();
       comidaIngrediente.ingrediente = ingrediente;
       this.objeto.ingredientesList.push(comidaIngrediente);
@@ -84,8 +83,6 @@ export class ComidaFormComponent extends BaseForm<Comida> implements OnInit {
       tipoComida.tipo = tipo;
       this.objeto.tipoList.push(tipoComida);
     }
-
-    console.log(this.objeto);
 
     this.comidaService.save(this.objeto).subscribe(res => {
         this.objeto = res;

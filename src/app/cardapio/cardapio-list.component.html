@@ -11,6 +11,7 @@
       <tr class="text-center">
         <th>Id</th>
         <th>Nome</th>
+        <th>Dia</th>
         <th>Inativo</th>
         <th>Ações</th>
       </tr>
@@ -19,6 +20,7 @@
       <tr class="text-center">
         <td>{{objeto.id}}</td>
         <td>{{objeto.cardapio}}</td>
+        <td>{{objeto.diaSemana}}</td>
         <td>
           <p-checkbox disabled="true"
                       [(ngModel)]="objeto.inativo"
@@ -27,8 +29,8 @@
         <td>
           <i [queryParams]="{id: objeto['id']}"
              [routerLink]="['form']"
-             class="pi pi-pencil"
-             title="Editar"></i>
+             class="pi pi-eye"
+             title="Ver"></i>
         </td>
       </tr>
     </ng-template>

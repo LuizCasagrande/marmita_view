@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from './base.service';
 import {HttpClient} from '@angular/common/http';
-import {Cardapio} from '../cardapio/Cardapio';
+import {Cardapio} from '../cardapio/cardapio';
 
 @Injectable({
   providedIn: 'root'

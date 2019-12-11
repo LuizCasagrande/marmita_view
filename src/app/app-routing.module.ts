@@ -11,7 +11,6 @@ import {CardapioListComponent} from './cardapio/cardapio-list.component';
 import {CardapioFormComponent} from './cardapio/cardapio-form.component';
 import {TamanhoFormComponent} from './tamanho/tamanho-form.component';
 import {TamanhoListComponent} from './tamanho/tamanho-list.component';
-import {LoginComponent} from './login/login.component';
 import {PedidoListComponent} from "./pedido/pedido-list.component";
 import {PedidoFormComponent} from "./pedido/pedido-form.component";
 import {TipoListComponent} from "./tipo/tipo-list.component";
@@ -20,7 +19,7 @@ import {TipoFormComponent} from "./tipo/tipo-form.component";
 
 const routes: Routes = [
   {
-    path: '', component: LoginComponent
+    path: '', component: HomeComponent
   },
   {
     path: 'inicio', component: HomeComponent

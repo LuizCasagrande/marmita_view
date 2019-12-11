@@ -10,6 +10,7 @@ import {environment} from "../../environments/environment";
 })
 export class LoginService extends BaseService<Login> implements OnInit {
   logado: EventEmitter<boolean> = new EventEmitter<boolean>();
+  abrirLogin: EventEmitter<void> = new EventEmitter<void>();
   constructor(protected http: HttpClient) {
     super(http, 'login');
   }

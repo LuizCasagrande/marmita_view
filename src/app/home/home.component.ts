@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../service/login.service";
 import {CardapioService} from "../service/cardapio.service";
-import {Cardapio} from "../cardapio/Cardapio";
+import {Cardapio} from "../cardapio/cardapio";
 
 @Component({
   selector: 'app-home',

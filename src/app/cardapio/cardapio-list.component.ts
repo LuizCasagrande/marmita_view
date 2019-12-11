@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ListComponent} from '../component/list.component';
-import {Cardapio} from './Cardapio';
+import {Cardapio} from './cardapio';
 import {CardapioService} from '../service/cardapio.service';
 import {ConfirmationService, MessageService} from 'primeng';
 import {Title} from '@angular/platform-browser';

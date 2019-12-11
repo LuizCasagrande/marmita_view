@@ -26,18 +26,16 @@
     </div>
     <div class="col-12">
       <p-table [value]="objeto.tamanhoPedidoList">
-        <ng-template pTemplate="header">
+        <ng-template pTemplate="header" >
           <tr>
             <th>Tamanho</th>
             <th>Quantidade</th>
-            <th>Peso</th>
           </tr>
         </ng-template>
         <ng-template let-item pTemplate="body" let-rowIndex="rowIndex">
           <tr>
-            <td>{{item?.tamanho?.peso}}</td>
-            <td>{{item?.quantidade}}</td>
-            <td>{{item?.peso | currency: 'BRL'}}</td>
+            <td>{{item?.tamanho?.peso }}</td>
+            <td>{{item?.quantidade | currency: 'BRL'}}</td>
           </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">

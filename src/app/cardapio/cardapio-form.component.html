@@ -8,21 +8,24 @@
             type="button"></button>
   </div>
   <div class="col-12">
-        <input [(ngModel)]="objeto.cardapio"
-               pInputText
-               type="text">
+    <p>Nome do Cardapio</p>
+    <input [(ngModel)]="objeto.cardapio"
+           pInputText
+           type="text">
   </div>
   <div class="col-12">
-        <p-checkbox [(ngModel)]="objeto.inativo"
-                    binary="true"
-                    label="Inativo"></p-checkbox>
+    <p-checkbox [(ngModel)]="objeto.inativo"
+                binary="true"
+                label="Inativo"></p-checkbox>
 
   </div>
   <div class="col-12">
+    <p>Dia da semana:</p>
     <p-dropdown [options]="diaOpcao" [(ngModel)]="objeto.diaSemana"></p-dropdown>
   </div>
 
   <div class="col-12">
+    <p>Comidas:</p>
     <p-multiSelect [options]="comidaListSuggestions"
                    [(ngModel)]="objeto.cardapioComidaList"
                    defaultLabel="Selecione:"></p-multiSelect>

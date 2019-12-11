@@ -47,6 +47,7 @@ export class CardapioFormComponent implements OnInit {
       if (params.has('id')) {
         this.cardapioService.findOne(parseInt(params.get('id'))).subscribe(res => {
           this.objeto = res;
+          this.postEdit(res);
         });
       } else {
         this.resetaForm();

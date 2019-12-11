@@ -15,6 +15,7 @@ import {PedidoListComponent} from "./pedido/pedido-list.component";
 import {PedidoFormComponent} from "./pedido/pedido-form.component";
 import {TipoListComponent} from "./tipo/tipo-list.component";
 import {TipoFormComponent} from "./tipo/tipo-form.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 
 const routes: Routes = [
@@ -25,34 +26,34 @@ const routes: Routes = [
     path: 'inicio', component: HomeComponent
   },
   {
-    path: 'ingrediente', component: IngredienteListComponent
+    path: 'ingrediente', component: IngredienteListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'ingrediente/form', component: IngredienteFormComponent
+    path: 'ingrediente/form', component: IngredienteFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'comida', component: ComidaListComponent
+    path: 'comida', component: ComidaListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'comida/form', component: ComidaFormComponent
+    path: 'comida/form', component: ComidaFormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'cliente', component: ClienteListComponent
+    path: 'cliente', component: ClienteListComponent, canActivate: [AuthGuard]
   },
   {
     path: 'cliente/form', component: ClienteFormComponent
   },
   {
-    path: 'cardapio', component: CardapioListComponent
+    path: 'cardapio', component: CardapioListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'cardapio/form', component: CardapioFormComponent
+    path: 'cardapio/form', component: CardapioFormComponent, canActivate: [AuthGuard]
   } ,
   {
-    path: 'tamanho', component: TamanhoListComponent
+    path: 'tamanho', component: TamanhoListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'tamanho/form', component: TamanhoFormComponent
+    path: 'tamanho/form', component: TamanhoFormComponent, canActivate: [AuthGuard]
   },
   {
     path: 'pedido', component: PedidoListComponent
@@ -61,10 +62,10 @@ const routes: Routes = [
     path: 'pedido/form', component: PedidoFormComponent
   },
   {
-    path: 'tipo', component: TipoListComponent
+    path: 'tipo', component: TipoListComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'tipo/form', component: TipoFormComponent
+    path: 'tipo/form', component: TipoFormComponent, canActivate: [AuthGuard]
   }
 ];
 

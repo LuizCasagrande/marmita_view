@@ -16,8 +16,6 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 })
 export class CardapioFormComponent extends BaseForm<Cardapio> implements OnInit {
 
-  objeto: Cardapio;
-
   diaOpcao: SelectItem[];
   comidaListSuggestions: SelectItem[];
   comidaList: Comida[] = [];

@@ -1,33 +1,33 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Injector, OnInit} from "@angular/core";
 import {TipoService} from "../service/tipo.service";
 import {Tipo} from "./tipo";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {MessageService} from "primeng";
+import {BaseForm} from "../service/base.form";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-tipo-form',
   templateUrl: './tipo-form.component.html',
   styleUrls: []
 })
-export class TipoFormComponent implements OnInit {
+export class TipoFormComponent extends BaseForm<Tipo> implements OnInit {
 
   objeto: Tipo;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(public injector: Injector,
               private tipoService: TipoService,
               private router: Router,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private fb: FormBuilder) {
+    super(injector, tipoService);
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      if (params.has('id')) {
-        this.tipoService.findOne(parseInt(params.get('id'))).subscribe(res => {
-          this.objeto = res;
-        });
-      } else {
-        this.resetaForm();
-      }
+    this.form = this.fb.group({
+      'id': new FormControl(''),
+      'tipoComida': new FormControl('', Validators.required),
+      'inativo': new FormControl(''),
     });
   }
 
@@ -49,8 +49,9 @@ export class TipoFormComponent implements OnInit {
     });
   }
 
-  private resetaForm(): void {
-    this.objeto = new Tipo();
+  onSubmit(value: Tipo) {
+    this.objeto = value;
+    this.salvar();
   }
 
 }

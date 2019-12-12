@@ -12,8 +12,8 @@ export class RelatorioPedidoClienteService extends BaseService<RelatorioPedidoCl
     super(http, 'relatorio');
   }
 
-  getRelatorioCliente(): Observable<[RelatorioPedidoCliente]>{
-    return this.http.get<[RelatorioPedidoCliente]>(`${this.getUrl()}/pedido-cliente`);
+  getRelatorioCliente(dataInicial: Date, dataFinal: Date): Observable<[RelatorioPedidoCliente]>{
+    return this.http.get<[RelatorioPedidoCliente]>(`${this.getUrl()}/pedido-cliente?dataInicial=${dataInicial}&dataFinal=${dataFinal}`);
   }
 
 }

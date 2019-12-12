@@ -34,6 +34,10 @@
              [routerLink]="['form']"
              class="pi pi-eye"
              title="Ver"></i>
+          <i (click)="pagar(objeto.id)"
+             *ngIf="isAdm == true"
+             class="pi pi-check"
+             title="Pagar"></i>
         </td>
       </tr>
     </ng-template>

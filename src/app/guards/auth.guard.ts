@@ -34,11 +34,12 @@ export class AuthGuard implements CanActivate {
       } else {
         if (state.url.indexOf("inicio") > -1
           || state.url.indexOf("cliente/form") > -1
+          || state.url.indexOf("sem-acesso") > -1
           || state.url.indexOf("pedido/form") > -1
           || state.url.indexOf("pedido") > -1) {
           return true;
         }
-        this.router.navigate(['/inicio']);
+        this.router.navigate(['/sem-acesso']);
         return false;
       }
     } else {

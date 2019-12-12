@@ -8,4 +8,5 @@ export class Cliente {
   logradouro: string;
   numero: number;
   bairro: string;
+  admin: boolean;
 }

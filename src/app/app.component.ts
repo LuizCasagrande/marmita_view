@@ -5,6 +5,9 @@ import {HttpClient} from "@angular/common/http";
 import {LoginService} from "./service/login.service";
 import {Login} from "./login/login";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {BaseService} from "./service/base.service";
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -18,6 +21,8 @@ export class AppComponent implements OnInit, OnDestroy {
   login: Login;
   taLogado: boolean = false;
   display: boolean = false;
+  getAUtoridade: boolean = false;
+  valueAdm: boolean;
 
   constructor(private sidebarService: SidebarService,
               private http: HttpClient,
@@ -28,51 +33,55 @@ export class AppComponent implements OnInit, OnDestroy {
       this.display = true;
     });
     this.login = new Login();
-    this.menuList = [
-      {
-        label: 'Início',
-        routerLink: '/inicio',
-        icon: 'pi pi-home'
-      },
-      {
-        label: 'Pedido',
-        items: [
-          {
-            label: 'Pedidos',
-            routerLink: '/pedido',
-          },
-          {
-            label: 'Clientes',
-            routerLink: '/cliente',
-          },
-          {
-            label: 'Tamanhos do pedido',
-            routerLink: 'tamanho',
-          }
-        ]
-      },
-      {
-        label: 'Marmita',
-        items: [
-          {
-            label: 'Ingredientes',
-            routerLink: '/ingrediente',
-          },
-          {
-            label: 'Comidas',
-            routerLink: '/comida',
-          },
-          {
-            label: 'Tipos de comida',
-            routerLink: '/tipo',
-          },
-        ]
-      },
-      {
-        label: 'Cardápios',
-        routerLink: '/cardapio',
-      },
-    ];
+    console.log(this.valueAdm);
+    if (this.valueAdm) {
+      this.menuList = [
+        {
+          label: 'Início',
+          routerLink: '/inicio',
+          icon: 'pi pi-home'
+        },
+        {
+          label: 'Pedido',
+          items: [
+            {
+              label: 'Pedidos',
+              routerLink: '/pedido',
+            },
+            {
+              label: 'Clientes',
+              routerLink: '/cliente',
+            },
+            {
+              label: 'Tamanhos do pedido',
+              routerLink: 'tamanho',
+            }
+          ]
+        },
+        {
+          label: 'Marmita',
+          items: [
+            {
+              label: 'Ingredientes',
+              routerLink: '/ingrediente',
+            },
+            {
+              label: 'Comidas',
+              routerLink: '/comida',
+            },
+            {
+              label: 'Tipos de comida',
+              routerLink: '/tipo',
+            },
+          ]
+        },
+        {
+          label: 'Cardápios',
+          routerLink: '/cardapio',
+        },
+      ];
+    }
+
   }
 
   ngOnInit(): void {
@@ -80,7 +89,18 @@ export class AppComponent implements OnInit, OnDestroy {
     this.loginService.getLogado().asObservable().subscribe(res => {
       this.taLogado = res;
     });
+    this.retornaAutoridade()
   }
+
+  retornaAutoridade() {
+    let value;
+    this.http.get(environment.api_url + "autoridade").subscribe( res => {
+      value = res;
+      this.valueAdm = value;
+    });
+  }
+
+
 
   ngOnDestroy(): void {
   }

@@ -12,12 +12,9 @@ export class RelatorioPedidoClienteService extends BaseService<RelatorioPedidoCl
     super(http, 'relatorio');
   }
 
-  findAllByCliente(): Observable<RelatorioPedidoCliente[]> {
-    return this.http.get<RelatorioPedidoCliente[]>(`${this.getUrl()}/pedido-cliente`);
+  getRelatorioCliente(): Observable<[RelatorioPedidoCliente]>{
+    return this.http.get<[RelatorioPedidoCliente]>(`${this.getUrl()}/pedido-cliente`);
   }
-
-
-
 
 }
 

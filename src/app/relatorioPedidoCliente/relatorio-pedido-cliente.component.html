@@ -1,0 +1,38 @@
+<p-card header="Seu relatorio relatorio">
+  <p-table [value]="relatorioPedidoClienteList">
+    <ng-template pTemplate="header">
+      <tr class="text-center">
+        <th>Id</th>
+        <th>Data do pedido</th>
+        <th>Status</th>
+        <th>Pago</th>
+        <th>Quantidade</th>
+        <th>Peso</th>
+        <th>Valor total</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-objeto>
+      <tr class="text-center">
+        <td>{{objeto.id}}</td>
+        <td>{{objeto.dataDoPedido | date:'dd/MM/yyyy'}}</td>
+        <td>{{objeto.status?'Solicitado':'Cancelado'}}</td>
+        <td>{{objeto.pago?'Não':'Sim' }}</td>
+        <td>{{objeto.quantidade}} uni</td>
+        <td>{{objeto.peso}} Kg</td>
+        <td>{{objeto.valorTotal | currency: 'BRL'}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr class="text-center">
+        <td colspan="4">Não há marmitas adicionadas ao pedido.</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <tr class="text-center">
+
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
+
+

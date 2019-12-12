@@ -14,7 +14,8 @@
         <th>Data</th>
         <th>Dia da semana</th>
         <th>Total</th>
-        <th>Pago / Cancelado</th>
+        <th>Pago</th>
+        <th>Cancelado</th>
         <th>Ações</th>
       </tr>
     </ng-template>
@@ -25,15 +26,21 @@
         <td>{{objeto.data}}</td>
         <td>{{objeto.diaSemana}}</td>
         <td>{{objeto.valorTotal | currency: 'BRL'}}</td>
-        <td>
-          <p-checkbox class="mr-3" [(ngModel)]="objeto.pago" disabled="true"></p-checkbox>
-          <p-checkbox [(ngModel)]="objeto.cancelado" disabled="true"></p-checkbox>
-        </td>
+        <td>{{objeto.pago?'SIM':''}}</td>
+        <td>{{objeto.status?'SIM':''}}</td>
         <td>
           <i [queryParams]="{id: objeto['id']}"
              [routerLink]="['form']"
              class="pi pi-eye"
              title="Ver"></i>
+          <i (click)="pagar(objeto.id)"
+             *ngIf="objeto.status == false && objeto.pago == false && isAdm == true"
+             class="pi pi-check mr-2 ml-2"
+             title="Pagar"></i>
+          <i (click)="cancelar(objeto.id)"
+             *ngIf="objeto.status == false && objeto.pago == false"
+             class="pi pi-times"
+             title="Cancelar"></i>
         </td>
       </tr>
     </ng-template>

@@ -128,5 +128,8 @@ export class PedidoFormComponent extends FormComponent<Pedido> implements OnInit
     this.calcularTotal();
   }
 
+  voltar() {
+    this.router.navigateByUrl('pedido')
+  }
 }
 

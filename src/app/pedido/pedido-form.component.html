@@ -1,10 +1,18 @@
-<p-card header="Fazer Pedido">
+<p-card>
+  <header *ngIf="objeto.id == null" style="font-size: 1.5em; font-weight: bold;">Fazer Pedido</header>
+  <header *ngIf="objeto.id != null" style="font-size: 1.5em; font-weight: bold;">Visualizar Pedido</header>
   <div class="text-right m-2">
-    <button (click)="salvar()"
+    <button *ngIf="objeto.id == null"
+            (click)="salvar()"
             class="ui-button-raised"
             label="Fazer Pedido"
             pButton
             type="button"></button>
+    <button *ngIf="objeto.id != null"
+            class="ui-button-rised"
+            label="Voltar"
+            pButton
+            (click)="voltar()"></button>
   </div>
   <div class="col-12">
     <p>Dia da Semana:</p>
@@ -14,7 +22,7 @@
   <div class="row">
     <div class="col-12">
       <div class="text-right m-2">
-        <p-button label="Adicionar" icon="pi pi-plus" (onClick)="novoItem()"></p-button>
+        <p-button *ngIf="objeto.id == null" label="Adicionar" icon="pi pi-plus" (onClick)="novoItem()"></p-button>
       </div>
     </div>
     <div class="col-12">
@@ -29,13 +37,15 @@
         </ng-template>
         <ng-template let-item pTemplate="body" let-rowIndex="rowIndex">
           <tr class="text-center">
-            <td>{{item.tamanho.peso}} Kg</td>
+            <td>{{item.tamanho.peso}} g</td>
             <td>{{item.quantidade}} uni.</td>
             <td>{{item.valorTotal|currency: 'BRL'}}</td>
             <td>
-              <i (click)="excluir(rowIndex)"
+              <i *ngIf="objeto.id == null"
+                 (click)="excluir(rowIndex)"
                  class="pi pi-trash"
                  title="Editar"></i>
+              <p *ngIf="objeto.id != null">Nenhuma Disponível</p>
             </td>
           </tr>
         </ng-template>

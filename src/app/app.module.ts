@@ -32,7 +32,7 @@ import {
 import {SidebarService} from './service/sidebar.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {IngredienteListComponent} from './ingrediente/ingrediente-list.component';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpRequestInterceptor} from './config/http-request.interceptor';
 import {IngredienteFormComponent} from './ingrediente/ingrediente-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -54,7 +54,7 @@ import { AlergiaFormComponent } from './alergia/alergia-form.component';
 import { FavoritoFormComponent } from './favorito/favorito-form.component';
 import { DetestadaComponent } from './detestada/detestada.component';
 import { TamanhoPedidoComponent } from './pedido/tamanho-pedido.component';
-import {BaseService} from "./service/base.service";
+import {RelatorioPedidoClienteComponent} from "./relatorioPedidoCliente/relatorio-pedido-cliente.component";
 
 registerLocaleData(localePt, 'pt');
 
@@ -85,6 +85,7 @@ registerLocaleData(localePt, 'pt');
     FavoritoFormComponent,
     DetestadaComponent,
     TamanhoPedidoComponent,
+    RelatorioPedidoClienteComponent
   ],
   imports: [
     BrowserModule,

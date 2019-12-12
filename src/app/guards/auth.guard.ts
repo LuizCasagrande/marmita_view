@@ -34,6 +34,7 @@ export class AuthGuard implements CanActivate {
       } else {
         if (state.url.indexOf("inicio") > -1
           || state.url.indexOf("cliente/form") > -1
+          || state.url.indexOf("pedido/form") > -1
           || state.url.indexOf("pedido") > -1) {
           return true;
         }

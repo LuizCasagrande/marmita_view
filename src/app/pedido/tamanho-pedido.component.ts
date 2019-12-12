@@ -30,10 +30,14 @@ export class TamanhoPedidoComponent implements OnInit {
   }
 
   salvarItem(): void {
+    if (this.objeto.quantidade == null) {
+      this.objeto.quantidade = 1;
+    }
     this.objeto.valorTotal = this.objeto.tamanho.preco * this.objeto.quantidade;
     this.onSalvar.emit(this.objeto);
     this.onClose.emit();
     this.resetaForm();
+
   }
 
 }

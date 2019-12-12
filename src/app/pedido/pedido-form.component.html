@@ -50,14 +50,10 @@
           </tr>
         </ng-template>
       </p-table>
-
     </div>
   </div>
-
 </p-card>
-
-<p-dialog [style]="{ width: '500px'}" [(visible)]="displayItem"  header="Tamanho Pedido" [modal]="true">
-  <app-tamanho-pedido (onSalvar)="adicionaItem($event)"
-                        (onClose)="displayItem = false"></app-tamanho-pedido>
+<p-dialog [style]="{width: '20vw'}" [(visible)]="displayItem"  header="Adicionar Marmita" [modal]="true">
+  <app-tamanho-pedido (onSalvar)="adicionaItem($event)" (onClose)="displayItem = false"></app-tamanho-pedido>
 </p-dialog>
 

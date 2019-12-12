@@ -20,7 +20,14 @@ import {
   SidebarModule,
   TableModule,
   ToastModule,
-  DropdownModule, InputMaskModule, MenubarModule, CalendarModule, MessageModule, AutoCompleteModule, SplitButtonModule
+  DropdownModule,
+  InputMaskModule,
+  MenubarModule,
+  CalendarModule,
+  MessageModule,
+  AutoCompleteModule,
+  SplitButtonModule,
+  SpinnerModule
 } from 'primeng';
 import {SidebarService} from './service/sidebar.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -47,7 +54,7 @@ import { AlergiaFormComponent } from './alergia/alergia-form.component';
 import { FavoritoFormComponent } from './favorito/favorito-form.component';
 import { DetestadaComponent } from './detestada/detestada.component';
 import { TamanhoPedidoComponent } from './pedido/tamanho-pedido.component';
-import { RelatorioPedidoClienteComponent } from './relatorioPedidoCliente/relatorio-pedido-cliente.component';
+import {BaseService} from "./service/base.service";
 
 registerLocaleData(localePt, 'pt');
 
@@ -77,8 +84,7 @@ registerLocaleData(localePt, 'pt');
     AlergiaFormComponent,
     FavoritoFormComponent,
     DetestadaComponent,
-    TamanhoPedidoComponent,
-    RelatorioPedidoClienteComponent
+    TamanhoPedidoComponent
   ],
   imports: [
     BrowserModule,
@@ -106,6 +112,7 @@ registerLocaleData(localePt, 'pt');
     ReactiveFormsModule,
     AutoCompleteModule,
     SplitButtonModule,
+    SpinnerModule,
 
   ],
   providers: [

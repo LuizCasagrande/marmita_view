@@ -70,7 +70,7 @@ const routes: Routes = [
   },
   {
     path: 'relatorio/pedido-cliente', component: RelatorioPedidoClienteComponent, canActivate: [AuthGuard]
-  }
+  },
 ];
 
 @NgModule({

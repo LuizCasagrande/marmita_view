@@ -79,6 +79,10 @@ export class AppComponent implements OnInit, OnDestroy {
           label: 'Cardápios',
           routerLink: '/cardapio',
         },
+        {
+          label: 'Relatorio',
+          routerLink: '/relatorio',
+        }
       ];
     } else {
       this.menuList = [

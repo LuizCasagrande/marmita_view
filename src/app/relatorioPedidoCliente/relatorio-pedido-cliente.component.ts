@@ -14,7 +14,7 @@ export class RelatorioPedidoClienteComponent implements OnInit {
   relatorioPedidoClienteList: RelatorioPedidoCliente[] = [];
 
   constructor(private relatorioPedidoClienteService: RelatorioPedidoClienteService) {
-    relatorioPedidoClienteService.findAllByCliente().subscribe( res => {
+    relatorioPedidoClienteService.getRelatorioCliente().subscribe( res => {
       this.relatorioPedidoClienteList = res;
     });
   }

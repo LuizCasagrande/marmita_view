@@ -16,6 +16,7 @@ import {PedidoFormComponent} from "./pedido/pedido-form.component";
 import {TipoListComponent} from "./tipo/tipo-list.component";
 import {TipoFormComponent} from "./tipo/tipo-form.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {RelatorioPedidoClienteComponent} from "./relatorioPedidoCliente/relatorio-pedido-cliente.component";
 
 
 const routes: Routes = [
@@ -66,6 +67,9 @@ const routes: Routes = [
   },
   {
     path: 'tipo/form', component: TipoFormComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'relatorio/pedido-cliente', component: RelatorioPedidoClienteComponent, canActivate: [AuthGuard]
   }
 ];
 

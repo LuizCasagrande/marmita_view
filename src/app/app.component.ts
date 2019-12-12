@@ -77,10 +77,26 @@ export class AppComponent implements OnInit, OnDestroy {
             routerLink: '/cardapio',
           },
         ];
+      }else{
+        this.menuList = [
+          {
+            label: 'Início',
+            routerLink: '/inicio',
+            icon: 'pi pi-home'
+          },
+          {
+            label: 'Pedido',
+            routerLink: '/pedido',
+            icon: 'pi pi-home'
+          },
+          {
+            label: 'Cardapio',
+            routerLink: '/cardapio',
+            icon: 'pi pi-home'
+          }
+        ]
       }
     });
-
-    console.log(this.admin);
     this.login = new Login();
   }
 

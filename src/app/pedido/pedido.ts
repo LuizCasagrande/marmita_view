@@ -9,7 +9,7 @@ export class Pedido {
   tamanhoPedidoList: TamanhoPedido[];
   cliente: Cliente;
   valorTotal: number;
-  status: boolean = true;
+  status: boolean;
   pago: boolean;
 
 }

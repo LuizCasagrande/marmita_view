@@ -52,7 +52,9 @@ export class PedidoListComponent extends ListComponent<Pedido> implements OnInit
   }
 
   cancelar(id: number) {
-    this.pedidoService.cancelar(id);
+    this.pedidoService.cancelar(id).subscribe(() => {
+      this.carregarLista();
+    });
   }
 
 }

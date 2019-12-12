@@ -17,8 +17,8 @@ export class PedidoService extends  BaseService<Pedido>{
     return this.http.get<void>(this.getUrl() + "/pago/" + id);
   }
 
-  cancelar(id: number) {
-    return this.http.get(this.getUrl() + "/cancelado/" + id).subscribe();
+  cancelar(id: number): Observable<void> {
+    return this.http.get<void>(this.getUrl() + "/cancelado/" + id);
   }
 
 }

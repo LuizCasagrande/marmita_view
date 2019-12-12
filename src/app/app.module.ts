@@ -87,6 +87,7 @@ registerLocaleData(localePt, 'pt');
     DetestadaComponent,
     TamanhoPedidoComponent,
     RelatorioPedidoClienteComponent,
+    RelatorioPedidoClienteComponent,
     RelatorioEmpresaComponent
   ],
   imports: [

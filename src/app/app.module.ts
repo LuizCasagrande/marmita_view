@@ -20,7 +20,14 @@ import {
   SidebarModule,
   TableModule,
   ToastModule,
-  DropdownModule, InputMaskModule, MenubarModule, CalendarModule, MessageModule, AutoCompleteModule, SplitButtonModule
+  DropdownModule,
+  InputMaskModule,
+  MenubarModule,
+  CalendarModule,
+  MessageModule,
+  AutoCompleteModule,
+  SplitButtonModule,
+  SpinnerModule
 } from 'primeng';
 import {SidebarService} from './service/sidebar.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -104,6 +111,7 @@ registerLocaleData(localePt, 'pt');
     ReactiveFormsModule,
     AutoCompleteModule,
     SplitButtonModule,
+    SpinnerModule,
 
   ],
   providers: [

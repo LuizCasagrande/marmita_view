@@ -10,29 +10,30 @@
     <ng-template pTemplate="header">
       <tr class="text-center">
         <th>Id</th>
+        <th>Cliente</th>
         <th>Data</th>
         <th>Dia da semana</th>
         <th>Total</th>
-        <th>Já Pago</th>
-        <th>Cliente</th>
+        <th>Pago / Cancelado</th>
         <th>Ações</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-objeto>
+    <ng-template pTemplate="body" let-objeto >
       <tr class="text-center">
         <td>{{objeto.id}}</td>
+        <td>{{objeto.cliente.nome}}</td>
         <td>{{objeto.data}}</td>
         <td>{{objeto.diaSemana}}</td>
         <td>{{objeto.valorTotal | currency: 'BRL'}}</td>
         <td>
-          <p-checkbox [(ngModel)]="objeto.status" disabled="true"></p-checkbox>
+          <p-checkbox class="mr-3" [(ngModel)]="objeto.pago" disabled="true"></p-checkbox>
+          <p-checkbox [(ngModel)]="objeto.cancelado" disabled="true"></p-checkbox>
         </td>
-        <td>{{objeto.cliente.nome}}</td>
         <td>
           <i [queryParams]="{id: objeto['id']}"
              [routerLink]="['form']"
-             class="pi pi-pencil"
-             title="Editar"></i>
+             class="pi pi-eye"
+             title="Ver"></i>
         </td>
       </tr>
     </ng-template>

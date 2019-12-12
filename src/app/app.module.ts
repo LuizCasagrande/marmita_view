@@ -55,6 +55,7 @@ import { FavoritoFormComponent } from './favorito/favorito-form.component';
 import { DetestadaComponent } from './detestada/detestada.component';
 import { TamanhoPedidoComponent } from './pedido/tamanho-pedido.component';
 import {RelatorioPedidoClienteComponent} from "./relatorioPedidoCliente/relatorio-pedido-cliente.component";
+import { SemAcessoComponent } from './sem-acesso/sem-acesso.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -85,7 +86,8 @@ registerLocaleData(localePt, 'pt');
     FavoritoFormComponent,
     DetestadaComponent,
     TamanhoPedidoComponent,
-    RelatorioPedidoClienteComponent
+    RelatorioPedidoClienteComponent,
+    SemAcessoComponent
   ],
   imports: [
     BrowserModule,

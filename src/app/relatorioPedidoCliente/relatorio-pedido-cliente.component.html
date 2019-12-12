@@ -1,4 +1,9 @@
 <p-card header="Seu relatorio relatorio">
+  <div class="col-12">
+    <div class="text-right m-2">
+      <p-button label="Adicionar" icon="pi pi-plus" ></p-button>
+    </div>
+  </div>
   <p-table [value]="relatorioPedidoClienteList">
     <ng-template pTemplate="header">
       <tr class="text-center">
@@ -18,7 +23,7 @@
         <td>{{objeto.status?'Solicitado':'Cancelado'}}</td>
         <td>{{objeto.pago?'Não':'Sim' }}</td>
         <td>{{objeto.quantidade}} uni</td>
-        <td>{{objeto.peso}} Kg</td>
+        <td>{{objeto.peso}} g</td>
         <td>{{objeto.valorTotal | currency: 'BRL'}}</td>
       </tr>
     </ng-template>
@@ -29,7 +34,6 @@
     </ng-template>
     <ng-template pTemplate="summary">
       <tr class="text-center">
-
       </tr>
     </ng-template>
   </p-table>

@@ -81,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy {
         },
         {
           label: 'Relatorio',
-          routerLink: '/relatorio',
+          routerLink: '/relatorio/pedido-empresa',
         }
       ];
     } else {

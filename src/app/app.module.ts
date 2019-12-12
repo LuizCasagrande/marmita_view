@@ -56,6 +56,7 @@ import { DetestadaComponent } from './detestada/detestada.component';
 import { TamanhoPedidoComponent } from './pedido/tamanho-pedido.component';
 import {RelatorioPedidoClienteComponent} from "./relatorioPedidoCliente/relatorio-pedido-cliente.component";
 import {RelatorioEmpresaComponent} from "./relatorio-empresa/relatorio-empresa.component";
+import {SemAcessoComponent} from "./sem-acesso/sem-acesso.component";
 
 registerLocaleData(localePt, 'pt');
 
@@ -87,8 +88,8 @@ registerLocaleData(localePt, 'pt');
     DetestadaComponent,
     TamanhoPedidoComponent,
     RelatorioPedidoClienteComponent,
-    RelatorioPedidoClienteComponent,
-    RelatorioEmpresaComponent
+    RelatorioEmpresaComponent,
+    SemAcessoComponent
   ],
   imports: [
     BrowserModule,

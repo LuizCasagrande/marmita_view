@@ -18,6 +18,8 @@ import {TipoFormComponent} from "./tipo/tipo-form.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {RelatorioPedidoClienteComponent} from "./relatorioPedidoCliente/relatorio-pedido-cliente.component";
 import {SemAcessoComponent} from "./sem-acesso/sem-acesso.component";
+import {RelatorioPedidoEmpresa} from "./relatorio-empresa/RelatorioPedidoEmpresa";
+import {RelatorioEmpresaComponent} from "./relatorio-empresa/relatorio-empresa.component";
 
 
 const routes: Routes = [
@@ -74,6 +76,9 @@ const routes: Routes = [
   },
   {
     path: 'sem-acesso', component: SemAcessoComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'relatorio/pedido-empresa', component: RelatorioEmpresaComponent, canActivate: [AuthGuard]
   }
 ];
 

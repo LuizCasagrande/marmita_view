@@ -1,9 +1,7 @@
 <p-card header="Seu relatorio relatorio">
-  <div class="col-12">
-    <div class="text-right m-2">
-      <p-button label="Adicionar" icon="pi pi-plus" ></p-button>
-    </div>
-  </div>
+  <p-calendar placeholder="Data inicial" [(ngModel)]="dataInicial" dataType="string" dateFormat="dd/MM/yy"></p-calendar>
+  <p-calendar class="m-2" placeholder="Data final" [(ngModel)]="dataFinal" dataType="string" dateFormat="dd/MM/yy"></p-calendar>
+  <p-button label="Buscar" (click)="filtraData()"></p-button>
   <p-table [value]="relatorioPedidoClienteList">
     <ng-template pTemplate="header">
       <tr class="text-center">
@@ -37,6 +35,7 @@
       </tr>
     </ng-template>
   </p-table>
+
 </p-card>
 
 

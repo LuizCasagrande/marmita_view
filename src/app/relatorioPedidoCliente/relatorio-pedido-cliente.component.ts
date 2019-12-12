@@ -1,6 +1,7 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {RelatorioPedidoClienteService} from "../service/relatorio-pedido-cliente.service";
 import {RelatorioPedidoCliente} from "./relatorioPedidoCliente";
+import {Pedido} from "../pedido/pedido";
 
 
 @Component({
@@ -10,18 +11,22 @@ import {RelatorioPedidoCliente} from "./relatorioPedidoCliente";
 })
 
 export class RelatorioPedidoClienteComponent implements OnInit {
-
+  dataInicial: Date;
+  dataFinal: Date;
   relatorioPedidoClienteList: RelatorioPedidoCliente[] = [];
 
   constructor(private relatorioPedidoClienteService: RelatorioPedidoClienteService) {
-    relatorioPedidoClienteService.getRelatorioCliente().subscribe( res => {
-      this.relatorioPedidoClienteList = res;
-    });
+
   }
 
   ngOnInit(): void {
   }
 
+  filtraData(){
+    this.relatorioPedidoClienteService.getRelatorioCliente(this.dataInicial, this.dataFinal).subscribe( res => {
+      this.relatorioPedidoClienteList = res;
+    });
+  }
 
 
 }

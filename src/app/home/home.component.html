@@ -1,5 +1,6 @@
 <div class="container text-center" style="margin: 0; padding: 0;position: relative; height: 515px;">
   <img src="./assets/imagens/inicial.jpeg" alt="prato-principal">
+  <p style="font-size: .7em">Imagens Meramente Ilustrativas</p>
   <div class="p-5" style="position: relative; background-color: white; width: 300px; top: -500px;
         left: 60px">
     <h2>Marmita do Dia</h2>
@@ -8,16 +9,19 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" style="text-transform: capitalize; margin-top: .2em">
   <div class="row">
     <div class="col-6 col-md-2 m-2 mr-3">
       <div class="card" style="width: 13rem;">
         <img src="./assets/imagens/feijao.jpg" class="card-img-top" style="width: 205px;height: 165px;" alt="">
         <div class="card-body">
-          <h5 class="card-title">Segunda Feira</h5>
-          <p>Ingredientes: </p>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Agendar</a>
+          <p style="font-size: 1.3em; font-weight: bold;">Segunda Feira:</p>
+          <p class="text-left">{{cardapioSeg?.cardapio}}:</p>
+          <ol>
+            <li *ngFor="let comidaList of cardapioSeg?.cardapioComidaList">
+              {{comidaList.comida.comida}}
+            </li>
+          </ol>
         </div>
       </div>
     </div>
@@ -25,10 +29,13 @@
       <div class="card" style="width: 13rem;">
         <img src="./assets/imagens/macarronada.jpg" class="card-img-top" style="width: 205px;height: 165px;" alt="">
         <div class="card-body">
-          <h5 class="card-title">Terça Feira</h5>
-          <p>Ingredientes: </p>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Agendar</a>
+          <p style="font-size: 1.3em; font-weight: bold;">Terça Feira:</p>
+          <p class="text-left">{{cardapioTer?.cardapio}}:</p>
+          <ol>
+            <li *ngFor="let comidaList of cardapioTer?.cardapioComidaList">
+              {{comidaList.comida.comida}}
+            </li>
+          </ol>
         </div>
       </div>
     </div>
@@ -36,10 +43,13 @@
       <div class="card" style="width: 13rem;">
         <img src="./assets/imagens/lasanha.jpg" class="card-img-top" style="width: 205px; height: 165px;" alt="">
         <div class="card-body">
-          <h5 class="card-title">Quarta Feira</h5>
-          <p>Ingredientes: </p>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Agendar</a>
+          <p style="font-size: 1.3em; font-weight: bold;">Quarta Feira:</p>
+          <p class="text-left">{{cardapioQua?.cardapio}}:</p>
+          <ol>
+            <li *ngFor="let comidaList of cardapioQua?.cardapioComidaList">
+              {{comidaList.comida.comida}}
+            </li>
+          </ol>
         </div>
       </div>
     </div>
@@ -47,10 +57,13 @@
       <div class="card" style="width: 13rem;">
         <img src="./assets/imagens/feijaoearroz.jpg" class="card-img-top" style="width: 205px; height: 165px;" alt="">
         <div class="card-body">
-          <h5 class="card-title">Quinta Feira</h5>
-          <p>Ingredientes: </p>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Agendar</a>
+          <p style="font-size: 1.3em; font-weight: bold;">Quinta Feira:</p>
+          <p class="text-left">{{cardapioQui?.cardapio}}:</p>
+          <ol>
+            <li *ngFor="let comidaList of cardapioQui?.cardapioComidaList">
+              {{comidaList.comida.comida}}
+            </li>
+          </ol>
         </div>
       </div>
     </div>
@@ -58,10 +71,13 @@
       <div class="card" style="width: 13rem;">
         <img src="./assets/imagens/feijoada.jpeg" class="card-img-top" style="width: 205px; height: 165px;" alt="">
         <div class="card-body">
-          <h5 class="card-title">Sexta Feira</h5>
-          <p>Ingredientes: </p>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Peça agora! </a>
+          <p style="font-size: 1.3em; font-weight: bold;">Sexta Feira:</p>
+          <p class="text-left">{{cardapioSex?.cardapio}}:</p>
+          <ol>
+            <li *ngFor="let comidaList of cardapioSex?.cardapioComidaList">
+              {{comidaList.comida.comida}}
+            </li>
+          </ol>
         </div>
       </div>
     </div>

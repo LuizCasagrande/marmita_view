@@ -1,7 +1,7 @@
 export enum DiaSemana {
-  SEGUNDA,
-  TERCA,
-  QUARTA,
-  QUINTA,
-  SEXTA,
+  SEGUNDA = "SEGUNDA",
+  TERCA = "TERCA",
+  QUARTA = "QUARTA",
+  QUINTA = "QUINTA",
+  SEXTA = "SEXTA",
 }

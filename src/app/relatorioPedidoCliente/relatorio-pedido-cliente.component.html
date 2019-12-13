@@ -10,16 +10,16 @@
 
   <div class="row">
     <div class="col-5">
-      <p-card header="Total Recebido">
-        {{totalRecebido}}
+      <p-card header="Total pago">
+        {{totalRecebido | currency:'BRL'}}
       </p-card>
     </div>
     <div class="col-2">
       &nbsp;
     </div>
     <div class="col-5">
-      <p-card header="Total a Receber">
-        {{totalAReceber}}
+      <p-card header="Total a pagar">
+        {{totalAReceber | currency:'BRL'}}
       </p-card>
     </div>
   </div>
@@ -42,8 +42,8 @@
       <tr class="text-center">
         <td>{{objeto.id}}</td>
         <td>{{objeto.dataDoPedido | date:'dd/MM/yy'}}</td>
-        <td>{{objeto.status?'Solicitado':'Cancelado'}}</td>
-        <td>{{objeto.pago?'Não':'Sim' }}</td>
+        <td>{{objeto.status?'Cancelado':'Solicitado'}}</td>
+        <td>{{objeto.pago?'Sim':'Não' }}</td>
         <td>{{objeto.quantidade}} uni</td>
         <td>{{objeto.peso}} g</td>
         <td>{{objeto.valorTotal | currency: 'BRL'}}</td>

@@ -1,8 +1,6 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {RelatorioPedidoClienteService} from "../service/relatorio-pedido-cliente.service";
 import {RelatorioPedidoCliente} from "./relatorioPedidoCliente";
-import {Pedido} from "../pedido/pedido";
-import {LocalNgModuleData} from "@angular/compiler-cli/src/ngtsc/scope";
 import {forkJoin} from "rxjs";
 
 

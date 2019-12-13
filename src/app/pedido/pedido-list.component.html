@@ -23,7 +23,7 @@
       <tr class="text-center">
         <td>{{objeto.id}}</td>
         <td>{{objeto.cliente.nome}}</td>
-        <td>{{objeto.data}}</td>
+        <td>{{objeto.data| date:'dd/MM/yyyy'}}</td>
         <td>{{objeto.diaSemana}}</td>
         <td>{{objeto.valorTotal | currency: 'BRL'}}</td>
         <td>{{objeto.pago?'SIM':''}}</td>

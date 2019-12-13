@@ -23,7 +23,7 @@ import {RelatorioEmpresaComponent} from "./relatorio-empresa/relatorio-empresa.c
 
 const routes: Routes = [
   {
-    path: 'inicio', component: HomeComponent
+    path: '', component: HomeComponent
   },
   {
     path: 'inicio', component: HomeComponent

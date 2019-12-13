@@ -21,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   taLogado: boolean = false;
   display: boolean = false;
   isAdm: boolean = false;
+  logininvalido: boolean = false;
 
   constructor(private sidebarService: SidebarService,
               private http: HttpClient,
@@ -141,6 +142,9 @@ export class AppComponent implements OnInit, OnDestroy {
       this.login = new Login();
       this.validaAdmin();
     });
+    if(!localStorage.getItem('Authorization')){
+      this.logininvalido = true;
+    }
   }
 
   confirmaLogout() {

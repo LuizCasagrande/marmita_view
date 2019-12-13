@@ -43,6 +43,9 @@
               class="ui-button-raised"
               (click)="autenticar()"></button>
     </div>
+    <div *ngIf="logininvalido" class="pt-2">
+      <p style="color: red">Usuario ou senha incorreto!</p>
+    </div>
   </div>
   <div class="text-center mt-3">
     <p>É novo por aqui?

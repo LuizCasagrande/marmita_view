@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {RelatorioPedidoEmpresaService} from "../service/relatorio-pedido-empresa.service";
 import {RelatorioPedidoEmpresa} from "./RelatorioPedidoEmpresa";
 import {DiaSemana} from "../cardapio/diaSemana";
+import {MessageService} from "primeng";
 
 @Component({
   selector: 'app-relatorio-empresa',
@@ -16,7 +17,8 @@ export class RelatorioEmpresaComponent {
   filtrado: boolean = false;
   valorTotal: number = 0;
 
-  constructor(private relatorioPedidoClienteService: RelatorioPedidoEmpresaService) {
+  constructor(private relatorioPedidoClienteService: RelatorioPedidoEmpresaService,
+              private messageService: MessageService) {
     this.diasSemana= [
       {label: 'Selecione:', value: null },
       {label: 'Segunda', value: DiaSemana.SEGUNDA },
@@ -36,11 +38,18 @@ export class RelatorioEmpresaComponent {
   }
 
   filtraData() {
-    console.log(this.chosenDay);
-    this.relatorioPedidoClienteService.getRelatorioEmpresa(this.chosenDay).subscribe( res => {
-      this.relatorioPedidoEmpresa = res;
-      this.calcularTotal();
-    });
-    this.filtrado = true;
+    if(this.chosenDay == null){
+      console.log('chegando aqui');
+      this.messageService.add({
+        summary: "Por favor, selecione uma dia da Semana!",
+        severity:'info'
+      })
+    }else{
+      this.relatorioPedidoClienteService.getRelatorioEmpresa(this.chosenDay).subscribe( res => {
+        this.relatorioPedidoEmpresa = res;
+        this.calcularTotal();
+      });
+      this.filtrado = true;
+    }
   }
 }

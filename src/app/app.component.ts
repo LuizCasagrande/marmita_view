@@ -95,6 +95,10 @@ export class AppComponent implements OnInit, OnDestroy {
           label: 'Meus Pedidos',
           routerLink: '/pedido',
         },
+        {
+          label: 'Relatorio',
+          routerLink: '/relatorio/pedido-cliente'
+        }
       ]
     }
   }

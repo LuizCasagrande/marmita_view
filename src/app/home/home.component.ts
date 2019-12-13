@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
               private cardapioService: CardapioService) {
     this.cardapioService.findAtivos().subscribe(res => {
       this.cardapios = res;
-      console.log(this.cardapios);
       for (const cardapio of this.cardapios) {
         if (cardapio.diaSemana == DiaSemana.SEGUNDA) {
           this.cardapioSeg = cardapio;
@@ -39,7 +38,6 @@ export class HomeComponent implements OnInit {
         if (cardapio.diaSemana == DiaSemana.SEXTA) {
           this.cardapioSex = cardapio;
         }
-        console.log(this.cardapioSex);
       }
     });
   }

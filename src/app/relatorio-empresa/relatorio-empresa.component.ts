@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {RelatorioPedidoEmpresaService} from "../service/relatorio-pedido-empresa.service";
 import {RelatorioPedidoEmpresa} from "./RelatorioPedidoEmpresa";
+import {DiaSemana} from "../cardapio/diaSemana";
+import {MessageService} from "primeng";
 
 @Component({
   selector: 'app-relatorio-empresa',
@@ -10,11 +12,44 @@ import {RelatorioPedidoEmpresa} from "./RelatorioPedidoEmpresa";
 export class RelatorioEmpresaComponent {
 
   relatorioPedidoEmpresa: RelatorioPedidoEmpresa[] = [];
+  diasSemana: [{ label: string; value: null },{ label: string; value: DiaSemana.SEGUNDA }, { label: string; value: DiaSemana.TERCA }, { label: string; value: DiaSemana.QUARTA }, { label: string; value: DiaSemana.QUINTA }, { label: string; value: DiaSemana.SEXTA }];
+  chosenDay: DiaSemana;
+  filtrado: boolean = false;
+  valorTotal: number = 0;
 
-  constructor(private relatorioPedidoClienteService: RelatorioPedidoEmpresaService) {
-    relatorioPedidoClienteService.getRelatorioEmpresa().subscribe( res => {
-      this.relatorioPedidoEmpresa = res;
-    });
+  constructor(private relatorioPedidoClienteService: RelatorioPedidoEmpresaService,
+              private messageService: MessageService) {
+    this.diasSemana= [
+      {label: 'Selecione:', value: null },
+      {label: 'Segunda', value: DiaSemana.SEGUNDA },
+      {label: 'Terça', value: DiaSemana.TERCA},
+      {label: 'Quarta', value: DiaSemana.QUARTA},
+      {label: 'Quinta', value: DiaSemana.QUINTA},
+      {label: 'Sexta', value: DiaSemana.SEXTA},
+    ]
   }
 
+  calcularTotal(): void{
+    let total = 0;
+    for (const relatorioPedido of this.relatorioPedidoEmpresa) {
+      total+= relatorioPedido.valorTotal;
+    }
+    this.valorTotal = total;
+  }
+
+  filtraData() {
+    if(this.chosenDay == null){
+      console.log('chegando aqui');
+      this.messageService.add({
+        summary: "Por favor, selecione uma dia da Semana!",
+        severity:'info'
+      })
+    }else{
+      this.relatorioPedidoClienteService.getRelatorioEmpresa(this.chosenDay).subscribe( res => {
+        this.relatorioPedidoEmpresa = res;
+        this.calcularTotal();
+      });
+      this.filtrado = true;
+    }
+  }
 }

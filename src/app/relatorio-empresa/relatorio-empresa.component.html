@@ -1,14 +1,48 @@
-<p-card header="Seu relatorio relatorio">
+<p-card header="Seu relatorio">
+  <p-dropdown [options]="diasSemana" [(ngModel)]="chosenDay"></p-dropdown>
+  <p-button label="Buscar" (click)="filtraData()"></p-button>
+</p-card>
+
+<div *ngIf="filtrado">
+  <div style="height: 20px"></div>
+
+  <div class="row">
+    <div class="col-5">
+      <p-card header="Valor Total de Marmitas">
+        {{valorTotal | currency: 'BRL'}}
+      </p-card>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-5">
+      <p-card header="Total De Marmitas por Peso">
+        <p-table [value]="relatorioPedidoEmpresa">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Peso</th>
+              <th>Valor Total Por Peso</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-objeto>
+            <tr>
+              <td>{{objeto.peso}}</td>
+              <td>{{objeto.valorTotal | currency: 'BRL'}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-card>
+    </div>
+  </div>
+
+  <div style="height: 20px"></div>
+
   <p-table [value]="relatorioPedidoEmpresa">
     <ng-template pTemplate="header">
       <tr class="text-center">
         <th>Id</th>
-        <th>Data do pedido</th>
-        <th>Status</th>
-        <th>Pago</th>
+        <th>Nome do Cliente</th>
         <th>Quantidade</th>
         <th>Peso</th>
-        <th>Valor total</th>
+        <th>Valor do Pedido</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-objeto>
@@ -16,13 +50,13 @@
         <td>{{objeto.id}}</td>
         <td>{{objeto.nome}}</td>
         <td>{{objeto.quantidade}}</td>
-        <td>{{objeto.preco}}</td>
+        <td>{{objeto.peso}}</td>
         <td>{{objeto.valorTotal}}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr class="text-center">
-        <td colspan="4">Não há marmitas adicionadas ao pedido.</td>
+        <td colspan="7">Não há marmitas adicionadas ao pedido.</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="summary">
@@ -30,7 +64,6 @@
       </tr>
     </ng-template>
   </p-table>
-
-</p-card>
+</div>
 
 

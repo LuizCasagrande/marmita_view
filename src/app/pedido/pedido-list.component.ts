@@ -4,7 +4,6 @@ import {Pedido} from './pedido';
 import {PedidoService} from '../service/pedido.service';
 import {ConfirmationService, MessageService} from 'primeng';
 import {Title} from '@angular/platform-browser';
-import { error } from 'util';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 
@@ -54,6 +53,28 @@ export class PedidoListComponent extends ListComponent<Pedido> implements OnInit
   cancelar(id: number) {
     this.pedidoService.cancelar(id).subscribe(() => {
       this.carregarLista();
+    });
+  }
+
+  confirmPagar(id: number) {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que quer pagar?',
+      acceptLabel: 'Sim',
+      rejectLabel: 'Não',
+      accept: () => {
+        this.pagar(id);
+      }
+    });
+  }
+
+  confirmCancelar(id: number) {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que quer cancelar?',
+      acceptLabel: 'Sim',
+      rejectLabel: 'Não',
+      accept: () => {
+        this.cancelar(id);
+      }
     });
   }
 

@@ -33,11 +33,11 @@
              [routerLink]="['form']"
              class="pi pi-eye"
              title="Ver"></i>
-          <i (click)="pagar(objeto.id)"
+          <i (click)="confirmPagar(objeto.id)"
              *ngIf="objeto.status == false && objeto.pago == false && isAdm == true"
              class="pi pi-check mr-2 ml-2"
              title="Pagar"></i>
-          <i (click)="cancelar(objeto.id)"
+          <i (click)="confirmCancelar(objeto.id)"
              *ngIf="objeto.status == false && objeto.pago == false"
              class="pi pi-times"
              title="Cancelar"></i>

@@ -2,12 +2,16 @@
   <p-calendar placeholder="Data inicial" [(ngModel)]="dataInicial" dataType="string" dateFormat="dd/mm/yy"></p-calendar>
   <p-calendar class="m-2" placeholder="Data final" [(ngModel)]="dataFinal" dataType="string" dateFormat="dd/mm/yy"></p-calendar>
 
-  <p-button label="Buscar" (click)="filtraData()"></p-button>
+  <p-button label="Buscar"  (click)="filtraData() "></p-button>
 </p-card>
 
 <div *ngIf="filtrado">
   <div style="height: 20px"></div>
-
+  <ng-template pTemplate="emptymessage">
+    <tr class="text-center">
+      <td colspan="4">Não há marmitas adicionadas ao pedido.</td>
+    </tr>
+  </ng-template>
   <div class="row">
     <div class="col-5">
       <p-card header="Total pago">

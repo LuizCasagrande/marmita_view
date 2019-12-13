@@ -18,6 +18,7 @@ export class RelatorioPedidoClienteComponent implements OnInit {
   totalAReceber: number;
   filtrado: boolean = false;
 
+
   constructor(private relatorioPedidoClienteService: RelatorioPedidoClienteService) {
   }
 

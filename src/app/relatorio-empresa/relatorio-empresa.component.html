@@ -1,11 +1,9 @@
-<p-card header="Seu relatorio relatorio">
+<p-card header="Seu relatorio">
   <p-table [value]="relatorioPedidoEmpresa">
     <ng-template pTemplate="header">
       <tr class="text-center">
         <th>Id</th>
-        <th>Data do pedido</th>
-        <th>Status</th>
-        <th>Pago</th>
+        <th>Nome</th>
         <th>Quantidade</th>
         <th>Peso</th>
         <th>Valor total</th>
@@ -16,7 +14,7 @@
         <td>{{objeto.id}}</td>
         <td>{{objeto.nome}}</td>
         <td>{{objeto.quantidade}}</td>
-        <td>{{objeto.preco}}</td>
+        <td>{{objeto.peso}}</td>
         <td>{{objeto.valorTotal}}</td>
       </tr>
     </ng-template>

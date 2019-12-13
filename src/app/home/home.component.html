@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div class="container" style="text-transform: capitalize; position: relative; top: -50px">
+<div class="container" style="text-transform: capitalize; position: relative; top: -40px">
   <div class="row">
     <div class="col-1 d-none d-lg-block">&nbsp;</div>
     <div class="col-12 col-sm-6 col-md-4 col-lg-2">
@@ -21,11 +21,11 @@
         <div class="card-body">
           <p style="font-size: 1.3em; font-weight: bold;">Segunda Feira:</p>
           <p class="text-left">{{cardapioSeg?.cardapio}}:</p>
-          <ol>
-            <li *ngFor="let comidaList of cardapioSeg?.cardapioComidaList">
+          <div>
+            <p *ngFor="let comidaList of cardapioSeg?.cardapioComidaList">
               {{comidaList.comida.comida}}
-            </li>
-          </ol>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -35,11 +35,11 @@
         <div class="card-body">
           <p style="font-size: 1.3em; font-weight: bold;">Terça Feira:</p>
           <p class="text-left">{{cardapioTer?.cardapio}}:</p>
-          <ol>
-            <li *ngFor="let comidaList of cardapioTer?.cardapioComidaList">
+          <div>
+            <p *ngFor="let comidaList of cardapioTer?.cardapioComidaList">
               {{comidaList.comida.comida}}
-            </li>
-          </ol>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -49,11 +49,11 @@
         <div class="card-body">
           <p style="font-size: 1.3em; font-weight: bold;">Quarta Feira:</p>
           <p class="text-left">{{cardapioQua?.cardapio}}:</p>
-          <ol>
-            <li *ngFor="let comidaList of cardapioQua?.cardapioComidaList">
+          <div>
+            <p *ngFor="let comidaList of cardapioQua?.cardapioComidaList">
               {{comidaList.comida.comida}}
-            </li>
-          </ol>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -63,11 +63,11 @@
         <div class="card-body">
           <p style="font-size: 1.3em; font-weight: bold;">Quinta Feira:</p>
           <p class="text-left">{{cardapioQui?.cardapio}}:</p>
-          <ol>
-            <li *ngFor="let comidaList of cardapioQui?.cardapioComidaList">
+          <div>
+            <p *ngFor="let comidaList of cardapioQui?.cardapioComidaList">
               {{comidaList.comida.comida}}
-            </li>
-          </ol>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -77,11 +77,11 @@
         <div class="card-body">
           <p style="font-size: 1.3em; font-weight: bold;">Sexta Feira:</p>
           <p class="text-left">{{cardapioSex?.cardapio}}:</p>
-          <ol>
-            <li *ngFor="let comidaList of cardapioSex?.cardapioComidaList">
+          <div>
+            <p *ngFor="let comidaList of cardapioSex?.cardapioComidaList">
               {{comidaList.comida.comida}}
-            </li>
-          </ol>
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -18,13 +18,12 @@ import {TipoFormComponent} from "./tipo/tipo-form.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {RelatorioPedidoClienteComponent} from "./relatorioPedidoCliente/relatorio-pedido-cliente.component";
 import {SemAcessoComponent} from "./sem-acesso/sem-acesso.component";
-import {RelatorioPedidoEmpresa} from "./relatorio-empresa/RelatorioPedidoEmpresa";
 import {RelatorioEmpresaComponent} from "./relatorio-empresa/relatorio-empresa.component";
 
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent
+    path: 'inicio', component: HomeComponent
   },
   {
     path: 'inicio', component: HomeComponent
@@ -80,6 +79,7 @@ const routes: Routes = [
   {
     path: 'relatorio/pedido-empresa', component: RelatorioEmpresaComponent, canActivate: [AuthGuard]
   }
+
 ];
 
 @NgModule({
